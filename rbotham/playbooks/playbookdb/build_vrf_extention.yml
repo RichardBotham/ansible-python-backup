@@ -1,0 +1,7 @@
+---
+- name: Build VRF Extention configuration
+  hosts: tyo_a_and_b_multicast_vars
+  connection: local
+  gather_facts: true
+  vars:  
+- include : tasks/a_and_b_multicast_roles.yml

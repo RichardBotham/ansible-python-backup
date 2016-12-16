@@ -1,0 +1,69 @@
+template_version: a_and_b_nexus_pxag_dcag_vars 
+change_number: 
+
+
+# vlans
+a_exchange_vrf_vlan_bbjr: 
+a_exchange_vrf_vlan_dcag: 
+
+
+# interfaces
+bbjr_facing_int: 
+dcag_facing_int:
+
+# general
+a_exchange_dcag_hostname:
+a_exchange_bbjr_hostname:
+
+pxag_asn:
+bbjr_asn:
+dcag_asn:
+
+#A side
+a_exchange_pxag_loop_ip:
+a_exchange_pxag_bbjr_ipsub:
+a_exchange_pxag_dcag_ipsub:
+a_exchange_vrf:
+a_exchange_vrf_rt:
+# B side
+b_exchange_pxag_loop_ip:
+b_exchange_pxag_bbjr_ipsub:
+b_exchange_pxag_dcag_ipsub:
+b_exchange_vrf:
+b_exchange_vrf_rt:
+
+
+
+#a side mcast groups and rp's
+pim_mode: sparse
+a_exchg_rp_addr1:
+a_exchange_group_mask1:
+   -
+
+a_exchg_rp_addr2:
+a_exchange_group_mask2:
+   -
+
+a_exchg_rp_addr3:
+a_exchange_group_mask3:
+   -
+
+
+a_exchg_rp_addr4:
+a_exchange_group_mask4:
+  -
+
+
+#b side mcast groups and rp's
+b_exchg_rp_addr1:
+b_exchange_group_mask1:
+   -
+
+b_exchg_rp_addr2:
+b_exchange_group_mask2:
+   -
+
+b_exchg_rp_addr3:
+b_exchange_group_mask3:
+   -
+b_exchg_rp_addr4:

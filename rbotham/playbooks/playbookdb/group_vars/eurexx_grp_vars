@@ -1,0 +1,91 @@
+template_version: a-side-7150-arista-template-v1.yml 
+change_number: 
+network_admin_pwd: gsxr1k512
+logging_server1: 172.28.113.55
+logging_server2: 172.28.118.55
+logging_server3: 172.28.113.77
+ntp_server1: 172.28.0.1
+ntp_server2: 172.31.240.10
+snmp_ro_comm1: IDCO-SNMP
+snmp_ro_comm2: St6A5n
+snmp_server1: 172.28.113.55
+snmp_server2: 172.29.118.55
+snmp_server3: 172.28.118.77
+tacacs_server1: 172.28.112.20
+tacacs_server2: 172.28.116.20
+tacacs_server_key: gsxr1k512
+
+
+global_loop_subnet: 198.18.217
+global_loop_subnet_ip: 0
+global_transit_subnet: 198.18.216
+global_transit_subnet_ip: 0
+
+
+local_bgp_asn: 20424
+remote_bgp_asn: 10101
+pim_mode: sparse
+eth1_description: 
+
+a_exchange_loop_subnet: 10.255.65
+a_exchange_loop_ip: 0 
+a_exchange_transit_subnet: 10.242.65 
+a_exchange_transit_ip: 0
+a_exchange_vrf: eurexxg.a
+a_exchange_vrf_rt: 1065
+
+
+b_exchange_loop_subnet: 10.255.66
+b_exchange_loop_ip: 0
+b_exchange_transit_subnet: 10.242.66
+b_exchange_transit_ip: 0
+b_exchange_vrf: eurexxg.b
+b_exchange_vrf_rt: 1066
+
+
+#pxag
+pxag_pim_interface:
+  - ae0
+  - ae1
+  - ae2
+  - ae3
+#dcag
+dcag_pim_interface:
+  - ae0
+  - ae2
+
+
+#a side mcast groups and rp's
+a_exchg_rp_addr1:
+a_exchange_group_mask1:
+   -
+
+a_exchg_rp_addr2:
+a_exchange_group_mask2:
+   -
+
+a_exchg_rp_addr3:
+a_exchange_group_mask3:
+   -
+
+
+a_exchg_rp_addr4:
+a_exchange_group_mask4:
+  -
+
+
+#b side mcast groups and rp's
+b_exchg_rp_addr1:
+b_exchange_group_mask1:
+   -
+
+b_exchg_rp_addr2:
+b_exchange_group_mask2:
+   -
+
+b_exchg_rp_addr3:
+b_exchange_group_mask3:
+   -
+b_exchg_rp_addr4:
+b_exchange_group_mask4:
+  -

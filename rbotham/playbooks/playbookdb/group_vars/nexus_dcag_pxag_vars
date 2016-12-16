@@ -1,0 +1,125 @@
+
+
+template_version: a_and_b_nexus_pxag_dcag_vars 
+
+# include files
+a_side_bgp_comm: /roles/a_and_b_multicast/include/a_side_bgp_communities.j2
+b_side_bgp_comm: /roles/a_and_b_multicast/include/b_side_bgp_communities.j2
+
+
+a_side_bgp_vrf: /roles/a_and_b_multicast/include/a_side_juniper_vrf_template.j2
+b_side_bgp_vrf: /roles/a_and_b_multicast/include/b_side_juniper_vrf_template.j2
+
+
+change_number: CHG-348645 
+hostname:
+
+#nexus loopback numbers - only go up tpo 1024 !!!
+a_exchange_loopback_num: 162
+b_exchange_loopback_num: 163
+
+# vlans
+a_exchange_vrf_vlan_bbjr: 162 
+a_exchange_vrf_vlan_dcag: 163
+
+b_exchange_vrf_vlan_bbjr: 165 
+b_exchange_vrf_vlan_dcag: 164
+
+# interfaces
+a_side_bbjr_loop_ip:
+a_side_bbjr_int: xe-1/3/0 
+a_side_bbjr_facing_int: Ethernet1/48
+a_side_dcag_facing_int: Ethernet1/4
+a_side_pxag_facing_int: Ethernet1/4
+
+b_side_bbjr_loop_ip: 198.18.16.41
+b_side_bbjr_int: xe-1/3/2
+b_side_bbjr_facing_int: Ethernet1/48
+b_side_dcag_facing_int: Ethernet1/4
+b_side_pxag_facing_int: Ethernet1/4
+
+# general
+a_side_dcag_hostname: idcfraeq2dcag03
+a_side_bbjr_hostname: idcfraeq2bbjr01
+a_side_pxag_hostname: idcfrae2qpxag01
+b_side_dcag_hostname: idcfraeq2dcag04
+b_side_bbjr_hostname: idcfraeq2bbjr02
+b_side_pxag_hostname: idcfrae2qpxag02
+
+
+pxag_asn: 65422
+bbjr_asn: 6394
+dcag_asn: 65423
+
+#A side
+a_exchange_loop_base: 10
+a_exchange_mpls_rt: 
+a_exchange_mdt_group: 
+a_exchange_loop_ipsub: 10.255.63
+a_exchange_loop_ip: 0
+a_exchange_pxag_bbjr_ipsub: 10.254.63
+a_exchange_pxag_bbjr_ip: 0
+a_exchange_pxag_dcag_ipsub: 10.254.63
+a_exchange_pxag_dcag_ip: 0
+a_exchange_vrf: cmexg-glink-a
+a_exchange_vrf_rt: 1063
+# B side
+b_exchange_loop_base: 10
+b_exchange_mpls_rt: 32227
+b_exchange_mdt_group: 239.232.8.2
+b_exchange_loop_ipsub: 10.255.64
+b_exchange_loop_ip: 0
+b_exchange_pxag_bbjr_ipsub: 10.254.64
+b_exchange_pxag_bbjr_ip: 4
+b_exchange_pxag_dcag_ipsub: 10.254.64
+b_exchange_pxag_dcag_ip: 6
+b_exchange_vrf: cmexg-glink-b
+b_exchange_vrf_rt: 1064
+
+
+
+#a side mcast groups and rp's
+pim_mode: sparse-mode
+a_exchg_rp_addr1: 205.209.215.254
+a_exchange_group_mask1:
+   - 233.158.8.0/25
+   - 233.72.75.0/26
+   - 224.0.26.0/24
+   - 224.0.31.0/24
+   - 224.0.33.0/24
+   - 233.119.160.0/26
+
+a_exchg_rp_addr2:
+a_exchange_group_mask2:
+   -
+
+a_exchg_rp_addr3:
+a_exchange_group_mask3:
+   -
+
+
+a_exchg_rp_addr4:
+a_exchange_group_mask4:
+  -
+
+
+#b side mcast groups and rp's
+b_exchg_rp_addr1: 66.54.251.236
+b_exchange_group_mask1:
+  - 224.0.27.0/24
+  - 224.0.32.0/24
+  - 224.0.34.0/24
+  - 233.72.75.64/26
+  - 233.119.160.64/26
+  - 233.158.8.128/25
+
+b_exchg_rp_addr2:
+b_exchange_group_mask2:
+   -
+
+b_exchg_rp_addr3:
+b_exchange_group_mask3:
+   -
+b_exchg_rp_addr4:
+b_exchange_group_mask4:
+   -

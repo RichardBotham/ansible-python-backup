@@ -1,0 +1,27 @@
+  
+  
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:                Ansible {{ansible_version.full}} on {{ansible_date_time.date}}																
+  Config built using template:    {{template_version}}                                                                                            
+  Config Build date:              {{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.minute}}-{{ansible_date_time.second}} 
+  Config location:                {{playbook_dir}}	 																							 
+  Config Author:                  Rich Botham                                                                                                     
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+!!!!!!!!!!!!!!
+{{inventory_hostname}}
+!!!!!!!!!!!!!!
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#B side interface section
+set interfaces {{b_side_bbjr_int}} unit {{b_exchange_vrf_vlan_bbjr}} description "{vrf: {{b_exchange_vrf}} TRANSIT TO {{b_side_pxag_hostname}}}"
+set interfaces {{b_side_bbjr_int}} unit {{b_exchange_vrf_vlan_bbjr}} vlan-id {{b_exchange_vrf_vlan_bbjr}}
+set interfaces {{b_side_bbjr_int}} unit {{b_exchange_vrf_vlan_bbjr}} family inet address {{b_exchange_pxag_bbjr_ipsub}}.{{b_exchange_pxag_bbjr_ip+0}}/31
+
+set interfaces lo0.{{b_exchange_vrf_rt}} family inet address {{b_exchange_loop_ipsub}}.{{b_exchange_loop_base+dev_id}}/32
+
+set routing-instances {{b_exchange_vrf}} interface {{b_side_bbjr_int}}.{{b_exchange_vrf_vlan_bbjr}}
+set routing-instances {{b_exchange_vrf}} interface lo0.{{b_exchange_vrf_rt}}
+
+{% include b_side_bgp_vrf %}

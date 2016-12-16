@@ -1,0 +1,58 @@
+set routing-instances {{b_exchange_vrf}} instance-type vrf
+set routing-instances {{b_exchange_vrf}} interface lo0.{{b_exchange_vrf_rt}}
+set routing-instances {{b_exchange_vrf}} route-distinguisher {{b_side_bbjr_loop_ip}}:{{b_exchange_vrf_rt}}
+set routing-instances {{b_exchange_vrf}} provider-tunnel pim-ssm group-address {{b_exchange_mdt_group}}
+set routing-instances {{b_exchange_vrf}} vrf-target target:{{b_exchange_vrf_rt}}:1
+set routing-instances {{b_exchange_vrf}} vrf-table-label
+set routing-instances {{b_exchange_vrf}} protocols bgp path-selection always-compare-med
+set routing-instances {{b_exchange_vrf}} protocols bgp hold-time 20
+set routing-instances {{b_exchange_vrf}} protocols bgp group {{b_exchange_vrf}}.ebgp type external
+
+set routing-instances {{b_exchange_vrf}} protocols bgp group {{b_exchange_vrf}}.ebgp neighbor {{b_exchange_pxag_bbjr_ipsub}}.{{b_exchange_pxag_bbjr_ip+1}} description "{{b_exchange_vrf}}_{{b_exchange_vrf_rt}}_to_{{b_side_pxag_hostname}}"
+set routing-instances {{b_exchange_vrf}} protocols bgp group {{b_exchange_vrf}}.ebgp neighbor {{b_exchange_pxag_bbjr_ipsub}}.{{b_exchange_pxag_bbjr_ip+1}} peer-as {{pxag_asn}}
+set routing-instances {{b_exchange_vrf}} protocols bgp group {{b_exchange_vrf}}.ebgp neighbor {{b_exchange_pxag_bbjr_ipsub}}.{{b_exchange_pxag_bbjr_ip+1}} export rm.pxag.out
+set routing-instances {{b_exchange_vrf}} protocols pim mvpn family inet autodiscovery inet-mdt
+
+set routing-instances {{b_exchange_vrf}} protocols pim interface lo0.{{b_exchange_vrf_rt}} mode {{pim_mode}}
+set routing-instances {{b_exchange_vrf}} protocols pim interface {{b_side_bbjr_int}}.{{b_exchange_vrf_vlan_bbjr}} mode {{pim_mode}}
+set routing-instances {{b_exchange_vrf}} protocols mvpn autodiscovery-only intra-as inclusive
+
+#*** RP 1 ***#
+{% if b_exchange_group_mask1 and b_exchg_rp_addr1 %}
+{% for exchg_grp in b_exchange_group_mask1 %}
+set routing-instances {{b_exchange_vrf}} protocols pim rp static address {{b_exchg_rp_addr1}} group-ranges {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+{% if b_exchange_group_mask1 and b_exchg_rp_addr1 %}
+set routing-instances {{b_exchange_vrf}} protocols pim rp static address {{b_exchg_rp_addr2}} override
+{% endif %}
+
+#*** RP 2 ***#
+{% if b_exchange_group_mask2 and b_exchg_rp_addr2 %}
+{% for exchg_grp in b_exchange_group_mask2 %}
+set routing-instances {{b_exchange_vrf}} protocols pim rp static address {{b_exchg_rp_addr2}} group-ranges {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+{% if b_exchange_group_mask2 and b_exchg_rp_addr2 %}
+set routing-instances {{b_exchange_vrf}} protocols pim rp static address {{b_exchg_rp_addr2}} override
+{% endif %}
+
+#*** RP 3 ***#
+{% if b_exchange_group_mask3 and b_exchg_rp_addr3 %}
+{% for exchg_grp in b_exchange_group_mask3 %}
+set routing-instances {{b_exchange_vrf}} protocols pim rp static address {{b_exchg_rp_addr3}} group-ranges {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+{% if b_exchange_group_mask3 and b_exchg_rp_addr3 %}
+set routing-instances {{b_exchange_vrf}} protocols pim rp static address {{b_exchg_rp_addr3}} override
+{% endif %}
+
+#*** RP 4 ***#
+{% if b_exchange_group_mask4 and b_exchg_rp_addr4 %}
+{% for exchg_grp in b_exchange_group_mask4 %}
+set routing-instances {{b_exchange_vrf}} protocols pim rp static address {{b_exchg_rp_addr4}} group-ranges {{exchg_grp}}
+{% endfor %}
+{% endif %}

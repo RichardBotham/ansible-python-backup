@@ -1,0 +1,50 @@
+---
+  - name: "==> Configure BBJR A side ..."
+    hosts: idcfraeq2bbjr01
+    gather_facts: no
+    connection: local
+  
+    roles:
+    - a_and_b_multicast/a_side/a_side_bbjr_role
+
+
+  - name: "==> Configure BBJR B side ..."
+    hosts: idcfraeq2bbjr02
+    gather_facts: no
+    connection: local
+    roles:
+    - a_and_b_multicast/b_side/b_side_bbjr_role
+
+
+  - name: "==> Configure PXAG A Side ..."
+    hosts: idcfraeq2pxag01
+    gather_facts: no
+    connection: local
+
+    roles:
+    - a_and_b_multicast/a_side/a_side_pxag_role
+
+  - name: "==> Configure PXAG B Side ..."
+    hosts: idcfraeq2pxag02
+    gather_facts: no
+    connection: local
+
+    roles:
+    - a_and_b_multicast/b_side/b_side_pxag_role
+
+
+  - name: "==> Configure DCAG A Side ..."
+    hosts: idcfraeq2dcag01
+    gather_facts: no
+    connection: local
+
+    roles:
+    - a_and_b_multicast/a_side/a_side_dcag_role
+
+  - name: "==> Configure DCAG B Side ..."
+    hosts: idcfraeq2dcag02
+    gather_facts: no
+    connection: local
+
+    roles:
+    - a_and_b_multicast/b_side/b_side_dcag_role

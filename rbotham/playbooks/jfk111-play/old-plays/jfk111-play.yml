@@ -1,0 +1,10 @@
+---
+ - name: testing configs
+   hosts: 127.0.0.1
+   connection: local
+
+   vars_files: 
+     - roles/a-side/vars/JFK_build_ebgp_vars.yml
+
+   roles:
+     - a-side

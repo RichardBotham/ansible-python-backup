@@ -1,0 +1,8 @@
+---
+- name: Build Configuration Files
+  hosts: local
+
+
+
+  roles:
+   - bbjr

@@ -1,0 +1,41 @@
+  
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Config built by:              Ansible 2.1.1.0 on 2016-11-30
+Config built using template:  ingress/egress_mpls_lsp_template.j2
+Config Build date:            2016-11-30-12-15-27
+Config location:              /home/rbotham/playbooks/playbookdb/tasks                                                                                                                                                                              
+Config Author:                Rich Botham
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+#''''''''''''''''''''''''''''''''''''''''
+# Start Config for IDCTYOATTBBJR02
+
+set interfaces xe-0/0/10 unit 604 description "VC-2000079-IDCTYOATTBBJR02-IDCHKGHK1BBJR04"
+set interfaces xe-0/0/10 unit 604 encapsulation vlan-ccc
+set interfaces xe-0/0/10 unit 604 vlan-id 604
+set interfaces xe-0/0/10 unit 604 family ccc policer input in-policer
+set interfaces xe-0/0/10 unit 604 family ccc policer output out-policer
+
+set protocols l2circuit neighbor 198.18.32.57 interface xe-0/0/10.604 psn-tunnel-endpoint 198.19.254.160
+set protocols l2circuit neighbor 198.18.32.57 interface xe-0/0/10.604 virtual-circuit-id 2000079
+set protocols l2circuit neighbor 198.18.32.57 interface xe-0/0/10.604 mtu 9198
+set protocols l2circuit neighbor 198.18.32.57 interface xe-0/0/10.604 description "VC-2000079-IDCTYOATTBBJR02-IDCHKGHK1BBJR04"
+
+
+set protocol mpls label-switched-path tyoatt.2-hkghk1.2 to 198.19.254.160
+set protocol mpls label-switched-path tyoatt.2-hkghk1.2 hop-limit 2
+set protocol mpls label-switched-path tyoatt.2-hkghk1.2 no-cspf
+set protocol mpls label-switched-path tyoatt.2-hkghk1.2 description "RSVP to PE-IDCHKGHK1BBJR04"
+set protocol mpls label-switched-path tyoatt.2-hkghk1.2 primary tyoatt-hkghk1
+
+set protocol mpls path tyoatt-hkghk1 198.18.33.36 strict
+
+set interfaces xe-0/0/10 description To-idctyoty2dcag04 
+set interfaces xe-0/0/10 flexible-vlan-tagging
+set interfaces xe-0/0/10 mtu 9000
+set interfaces xe-0/0/10 encapsulation flexible-ethernet-services
+# End Config for IDCTYOATTBBJR02
+#''''''''''''''''''''''''''''''''''''''''

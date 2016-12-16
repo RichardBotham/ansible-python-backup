@@ -1,0 +1,14 @@
+---
+  - name: "==> Configure PXAG A Side..."
+    hosts: idcfraeq2pxag03
+    gather_facts: no
+    connection: local
+    roles:
+    - a_and_b_multicast/a_side/a_side_pxag_role
+
+  - name: "==> Configure PXAG B Side..."
+    hosts: idcfraeq2pxag04
+    gather_facts: no
+    connection: local
+    roles:
+    - a_and_b_multicast/b_side/b_side_pxag_role

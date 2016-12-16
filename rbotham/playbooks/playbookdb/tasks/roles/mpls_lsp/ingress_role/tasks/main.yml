@@ -1,0 +1,4 @@
+---
+- name: "Building Ingress MPLS LSP configuration..."
+  template: src=../templates/ingress_mpls_lsp_template_v3.j2 dest=/home/rbotham/playbooks/playbookdb/config-repository/{{change_number}}-build-{{inventory_hostname}}-{{ansible_date_time.day}}-{{ansible_date_time.month}}-{{ansible_date_time.year}}-{{ansible_date_time.hour}}:{{ansible_date_time.minute}}-config.txt
+

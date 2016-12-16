@@ -1,0 +1,126 @@
+undefined variable error
+
+when running a playbook and the hosts file does not match the vairable definition it will fail
+if the hosts definition in the playbook does NOT match the header int he /etc/ansible/hosts file
+below is incorrect
+
+ansible hosts file
+|
+V
+
+idctyoty2bbjr01
+idchkgcs2bbjr01
+
+hosts: mpls_lsp_vars_v3
+
+below is correct
+
+- include : tasks/mpls_lsp_role.yml
+ansible hosts files
+|
+V
+
+[mpls_lsp_vars_v3]
+idctyoty2bbjr01
+idchkgcs2bbjr01
+
+
+
+
+
+
+
+
+
+[nexus_dcag_pxag_vars]	<============== dcag_pxag !!
+idcfraeq2pxag01
+idcfraeq2pxag02
+idcfraeq2dcag03
+idcfraeq2dcag04
+idcfraeq2bbjr01
+idcfraeq2bbjr02
+
+
+---
+- name: Build NEXUS based PCAG and DCAG vrf extensions..
+  hosts: nexus_dcag_pxag_vars
+  connection: local
+  vars:
+
+#  pre_tasks:
+#    - name: Remove Old Configuration files....
+#
+#      file: path=config-repository/ state=absent
+#
+#    - name: Create config-repository directory...
+#      file: path=config-repository/ state=directory
+
+- include : tasks/nexus_dcag_pxag_vars.yml 	<============== dcag_pxag !!
+
+
+
+[rbotham@ernie playbookdb]$ cd group_vars/
+[rbotham@ernie group_vars]$ ls -la
+total 40
+drwxrwxr-x. 2 rbotham rbotham 4096 Oct  4 12:20 .
+drwxrwxr-x. 7 rbotham rbotham 4096 Oct  4 12:22 ..
+-rw-rw-r--. 1 rbotham rbotham 1258 Sep  1 15:54 a_and_b_multicast_vars
+-rw-rw-r--. 1 rbotham rbotham 2494 Sep 13 14:38 egress_mpls_lsp_template_v3.j2
+-rw-rw-r--. 1 rbotham rbotham 1551 Sep 30 16:21 eurexx_grp_vars
+-rw-rw-r--. 1 rbotham rbotham 2505 Sep 13 14:38 ingress_mpls_lsp_template_v3.j2
+-rw-rw-r--. 1 rbotham rbotham 1039 Sep  8 11:54 mpls_lsp_vars
+-rw-rw-r--. 1 rbotham rbotham 1151 Sep 13 15:42 mpls_lsp_vars_v3
+-rw-rw-r--. 1 rbotham rbotham 1148 Sep 13 14:38 mpls_lsp_vars_v3_13_09_2016.yml
+-rw-rw-r--. 1 rbotham rbotham 1023 Oct  4 11:26 nexus_pxag_dcag_vars					<============== pxag_dcag !! Arrrgggggh wrong way around
+-rw-rw-r--. 1 rbotham rbotham    0 Sep  1 15:34 single_tcp_vrf_vars
+
+
+
+
+[rbotham@ernie playbookdb]$  ansible-playbook nexus_pxag_dcag_build_network.yml -i ../ansible-hosts 
+
+PLAY [Build NEXUS based PCAG and DCAG vrf extensions..] ************************
+
+TASK [setup] *******************************************************************
+ok: [idcfraeq2pxag01]
+ok: [idcfraeq2dcag03]
+ok: [idcfraeq2bbjr02]
+ok: [idcfraeq2pxag02]
+ok: [idcfraeq2bbjr01]
+
+PLAY [==> Configure PXAG A Side ...] *******************************************
+
+TASK [a_and_b_multicast/a_side/a_side_pxag_role : Building PXAG Router A Side configuration...] ***
+
+fatal: [idcfraeq2pxag01]: FAILED! => {"failed": true, "msg": "the field 'args' has an invalid value, which appears to include a variable that is undefined. 
+
+The error was: 'change_number' is undefined\n\nThe error appears to have been in '/home/rbotham/playbooks/playbookdb/tasks/roles/a_and_b_multicast/a_side/a_side_pxag_role/tasks/main.yml': line 2, column 3,
+
+but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n---\n- name: \"Building PXAG Router A Side configuration...\"\n  ^ here\n"}
+
+NO MORE HOSTS LEFT *************************************************************
+ [WARNING]: Could not create retry file 'nexus_pxag_dcag_build_network.retry'.         [Errno 2] No such file or directory: ''
+
+PLAY RECAP *********************************************************************
+idcfraeq2bbjr01            : ok=1    changed=0    unreachable=0    failed=0   
+idcfraeq2bbjr02            : ok=1    changed=0    unreachable=0    failed=0   
+idcfraeq2dcag03            : ok=1    changed=0    unreachable=0    failed=0   
+idcfraeq2pxag01            : ok=1    changed=0    unreachable=0    failed=1   
+idcfraeq2pxag02            : ok=1    changed=0    unreachable=0    failed=0   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

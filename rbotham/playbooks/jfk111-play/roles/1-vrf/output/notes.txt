@@ -1,0 +1,11 @@
+root@IDCJFK111DCAG01:RE:0% pwd
+/var/tmp/usb
+root@IDCJFK111DCAG01:RE:0% cd ..
+root@IDCJFK111DCAG01:RE:0% ls -la
+total 1345092
+drwxrwxrwt  11 root   field      19456 Aug  4 21:32 .
+drwxr-xr-x  35 root   wheel       1024 Aug  4 21:30 ..
+drwxrwxr-x   2 root   wheel        512 Jul 20  2015 .snap
+drwxr-xr-x   2 root   field        512 Aug  4 07:41 gres-tp
+drwxrwxrwx   2 root   wheel        512 Aug  4 07:41 install
+-rw-r--r--   1 admin  field  450527490 Aug  4 07:17 jinstall-qfx-5-14.1X53-D27.3-domestic-signed.tgz

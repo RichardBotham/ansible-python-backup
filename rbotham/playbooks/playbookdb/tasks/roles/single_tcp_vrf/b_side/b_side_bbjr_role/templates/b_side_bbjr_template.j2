@@ -1,0 +1,34 @@
+  
+  
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by: 				Ansible {{ansible_version.full}} on {{ansible_date_time.date}}																
+  Config built using template: 	{{template_version}}                                                                                            
+  Config Build date:			{{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.minute}}-{{ansible_date_time.second}} 
+  Config location: 				{{playbook_dir}}	 																							 
+  Config Author: 				Rich Botham                                                                                                     
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+!!!!!!!!!!!!!!
+idcjfk111bbjr01
+!!!!!!!!!!!!!!
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side interface section
+set interfaces ae1 unit {{b_exchange_vrf_rt}} description "{vrf: {{b_exchange_vrf}} TRANSIT TO IDCJFK111PXAG01}"
+set interfaces ae1 unit {{b_exchange_vrf_rt}} vlan-id {{b_exchange_vrf_rt}}
+set interfaces ae1 unit {{b_exchange_vrf_rt}} family inet address {{b_exchange_transit_subnet}}.{{b_exchange_transit_4th_oct+1}}{{transit_mask}}
+
+set routing-instances {{b_exchange_vrf}} interface ae1.{{b_exchange_vrf_rt}}
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side ebgp section
+set routing-instances {{b_exchange_vrf}} protocols bgp group {{b_exchange_vrf}}.ebgp type external
+set routing-instances {{b_exchange_vrf}} protocols bgp group {{b_exchange_vrf}}.ebgp neighbor {{b_exchange_transit_subnet}}.{{b_exchange_transit_4th_oct}} description "IDCJFK111PXAG01"
+set routing-instances {{b_exchange_vrf}} protocols bgp group {{b_exchange_vrf}}.ebgp neighbor {{b_exchange_transit_subnet}}.{{b_exchange_transit_4th_oct}} peer-as {{local_bgp_asn}}
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#multicast section
+
+set routing-instances {{b_exchange_vrf}} protocols pim interface ae1.{{b_exchange_vrf_rt}} mode {{pim_mode}} 

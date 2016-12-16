@@ -1,0 +1,3 @@
+---
+- name: "Building DCAG Router A Side configuration..."
+  template: src=/home/rbotham/playbooks/playbookdb/tasks/roles/a_and_b_multicast/a_side/a_side_dcag_role/templates/tyo_a_side_dcag_template.j2 dest=/home/rbotham/playbooks/playbookdb/config-repository/{{change_number}}-{{inventory_hostname}}-{{a_exchange_vrf}}-{{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.second}}-build-config.txt

@@ -1,0 +1,75 @@
+#Exchange Specific
+
+template_version: "JFK_build_ebgp_config-json_v3.j2"
+
+change_number: OSEXG.A & OSEXG.B
+transit_mask: /31
+loopback_mask: /32
+local_bgp_asn: 6394
+remote_bgp_asn: 65005
+pim_mode: sparse-dense
+
+pxag_pim_interface:
+  - ae0
+  - ae1
+  - ae2
+
+dcag_pim_interface:
+  - ae1
+  - ae2
+
+a_exchange_loop_subnet: 10.255.93
+a_exchange_loop_4th_oct: 0
+a_exchange_transit_subnet: 10.242.93
+a_exchange_transit_4th_oct: 0
+a_exchange_vrf: osexg.a
+a_exchange_vrf_rt: 1093
+
+b_exchange_loop_subnet: 10.255.94
+b_exchange_loop_4th_oct: 0
+b_exchange_transit_subnet: 10.254.94
+b_exchange_transit_4th_oct: 0
+b_exchange_vrf: osexg.b
+b_exchange_vrf_rt: 1094
+
+
+#----------------------------------------------------------------------------------#
+
+#a side mcast groups and rp's
+a_exchg_rp_addr1: 192.168.211.1
+a_exchange_group_mask1:
+   - 239.192.1.41/32
+   - 239.192.1.15/32
+   - 239.192.1.11/32
+   - 239.192.1.102/32
+   - 239.192.1.100
+   - 239.192.1.101
+       
+a_exchg_rp_addr2: 
+a_exchange_group_mask2:
+   -
+
+a_exchg_rp_addr3: 
+a_exchange_group_mask3:
+   -
+
+a_exchg_rp_addr4: 
+a_exchange_group_mask4:
+
+
+#----------------------------------------------------------------------------------#
+#b side mcast groups and rp's
+b_exchg_rp_addr1:
+b_exchange_group_mask1:
+   -
+
+b_exchg_rp_addr2:
+b_exchange_group_mask2:
+   -
+
+b_exchg_rp_addr3:
+b_exchange_group_mask3:
+   -
+
+b_exchg_rp_addr4:
+b_exchange_group_mask4:

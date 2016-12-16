@@ -1,0 +1,33 @@
+  
+
+  Config built by:                Ansible 2.1.1.0 on 2016-10-05																
+  Config built using template:    a_and_b_nexus_pxag_dcag_vars                                                                                            
+  Config Build date:              2016-10-05-09-42-24 
+  Config location:                /home/rbotham/playbooks/playbookdb/tasks	 																							 
+  Config Author:                  Rich Botham                                                                                                     
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+!!!!!!!!!!!!!!
+idcfraeq2bbjr01
+!!!!!!!!!!!!!!
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side interface section
+set interfaces xe-1/3/0 unit 162 description "{vrf: cmexg.glink.a TRANSIT TO idcfrae2qpxag01"
+set interfaces xe-1/3/0 unit 162 vlan-id 1063
+set interfaces xe-1/3/0 unit 162 family inet address 10.254.63.0/31
+
+set routing-instances cmexg.glink.a interface xe-1/3/0.162
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side ebgp section
+set routing-instances cmexg.glink.a protocols bgp group cmexg.glink.a.ebgp type external
+set routing-instances cmexg.glink.a protocols bgp group cmexg.glink.a.ebgp neighbor 10.254.63.1 description "idcfrae2qpxag01"
+set routing-instances cmexg.glink.a protocols bgp group cmexg.glink.a.ebgp neighbor 10.254.63.1 peer-as 65422
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#multicast section
+
+set routing-instances cmexg.glink.a protocols pim interface xe-1/3/0.162 mode sparse 

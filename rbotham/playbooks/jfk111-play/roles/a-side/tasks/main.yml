@@ -1,0 +1,4 @@
+---
+  - name: Generate JFK 111 VRF Based Configs
+   
+    template: src=/home/rbotham/playbooks/jfk111-play/roles/a-side/templates/JFK_build_ebgp_config-json_v3.j2 dest=/home/rbotham/playbooks/jfk111-play/roles/a-side/output/{{a_exchange_vrf}}-and-{{b_exchange_vrf}}-jfk-111-{{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.minute}}-{{ansible_date_time.second}}-build.cfg

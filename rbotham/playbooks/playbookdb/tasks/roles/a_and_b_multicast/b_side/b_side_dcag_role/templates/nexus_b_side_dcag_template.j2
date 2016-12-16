@@ -1,0 +1,77 @@
+
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:				Ansible {{ansible_version.full}} on {{ansible_date_time.date}}
+  Config built using template:  {{template_version}}
+  Config Build date:            {{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.minute}}-{{ansible_date_time.second}}
+  Config location:              {{playbook_dir}}                                                                                                                                                                              
+  Config Author:                Rich Botham
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+{{hostname}}
+
+!'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''!
+!B Side general section NEXUS DCAG
+
+vlan {{b_exchange_vrf_vlan_dcag}}
+ name  {{b_exchange_vrf}}-to-PXAG
+
+interface {{b_side_pxag_facing_int}}
+ switchport trunk allowed vlan add {{b_exchange_vrf_vlan_dcag}}
+
+
+interface loopback{{b_exchange_loopback_num}}
+  vrf member {{b_exchange_vrf}}
+  ip address {{b_exchange_loop_ipsub}}.{{b_exchange_loop_base+dev_id}}/32
+
+interface Vlan{{b_exchange_vrf_vlan_dcag}}
+  vrf member {{b_exchange_vrf}}
+  ip address {{b_exchange_pxag_dcag_ipsub}}.{{b_exchange_pxag_dcag_ip+3}}/31
+  ip pim {{pim_mode}}
+  no shutdown
+
+vrf context {{b_exchange_vrf}}
+!*** RP 1 ***!
+{% if b_exchange_group_mask1 and b_exchg_rp_addr1 %}
+{% for exchg_grp in b_exchange_group_mask1 %}
+ip pim rp-address {{b_exchg_rp_addr1}} group-list {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+!*** RP 2 ***!
+{% if b_exchange_group_mask2 and b_exchg_rp_addr2 %}
+{% for exchg_grp in b_exchange_group_mask2 %}
+ip pim rp-address {{b_exchg_rp_addr2}} group-list {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+
+!*** RP 3 ***!
+{% if b_exchange_group_mask3 and b_exchg_rp_addr3 %}
+{% for exchg_grp in b_exchange_group_mask3 %}
+ip pim rp-address {{b_exchg_rp_addr3}} group-list {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+
+!*** RP 4 ***!
+{% if b_exchange_group_mask4 and b_exchg_rp_addr4 %}
+{% for exchg_grp in b_exchange_group_mask4 %}
+ip pim rp-address {{b_exchg_rp_addr4}} group-list {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+
+
+router bgp {{dcag_asn}}
+  vrf {{b_exchange_vrf}}
+    router-id {{b_exchange_loop_ipsub}}.{{b_exchange_loop_base+dev_id}}
+    address-family ipv4 unicast
+      network {{b_exchange_loop_ipsub}}.{{b_exchange_loop_base+dev_id}}/32
+    neighbor {{b_exchange_pxag_dcag_ipsub}}.{{ b_exchange_pxag_dcag_ip+2 }} remote-as {{pxag_asn}}
+      description {{b_side_pxag_hostname}}
+      timers 5 15
+      address-family ipv4 unicast
+        send-community both
+

@@ -1,0 +1,324 @@
+2016-09-14 14:05:04,124:CONFIG:junipervm3:connecting to host: rich@junipervm3:830
+2016-09-14 14:05:04,173:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_5.9)
+2016-09-14 14:05:04,567:ncclient.transport.ssh:Authentication (password) successful!
+2016-09-14 14:05:05,151:ncclient.transport.session:initialized: session-id=3046 | server_capabilities=<dictionary-keyiterator object at 0x7f89a390eaf8>
+2016-09-14 14:05:05,152:CONFIG:junipervm3:Getting cli output
+2016-09-14 14:05:05,153:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:05:05,319:CONFIG:junipervm3:Uncaught exception - please report: coercing to Unicode: need string or buffer, NoneType found
+2016-09-14 14:05:05,320:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:08:44,703:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:08:44,704:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:08:44,872:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:08:44,872:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:09:56,131:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:09:56,132:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:09:56,350:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:09:56,351:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:10:44,006:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:10:44,007:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:10:44,175:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:10:44,176:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:11:18,724:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:11:18,725:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:18,893:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:19,009:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:19,125:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:19,244:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:19,360:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:19,478:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:19,595:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:19,711:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:19,828:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:11:19,829:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:11:37,924:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:11:37,925:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:38,093:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:38,210:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:38,326:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:38,444:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:38,560:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:38,678:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:38,794:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:38,961:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:11:39,028:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:11:39,028:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:13:03,303:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:13:03,304:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:13:03,472:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:13:03,639:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:13:03,705:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:13:03,825:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:13:03,941:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:13:04,059:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:13:04,175:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:13:04,292:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:13:04,408:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:13:04,409:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:14:39,550:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:14:39,550:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:14:39,719:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:14:39,835:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:14:39,951:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:14:40,069:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:14:40,186:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:14:40,306:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:14:40,423:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:14:40,590:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:14:40,656:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:14:40,657:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:15:25,581:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:15:25,582:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:15:25,751:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:15:25,867:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:15:25,983:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:15:26,102:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:15:26,219:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:15:26,336:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:15:26,503:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:15:26,619:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:15:26,735:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:15:26,736:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:16:47,242:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:16:47,243:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:16:47,410:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:16:47,527:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:16:47,643:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:16:47,761:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:16:47,878:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:16:47,996:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:16:48,162:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:16:48,278:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:16:48,395:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:16:48,395:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:17:16,832:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:17:16,833:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:17:17,002:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:17:17,118:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:17:17,234:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:17:17,352:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:17:17,469:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:17:17,587:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:17:17,703:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:17:17,819:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:17:17,936:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:17:17,936:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:18:04,976:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:18:04,977:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:18:05,146:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:18:05,262:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:18:05,378:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:18:05,547:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:18:05,614:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:18:05,780:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:18:05,895:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:18:06,009:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:18:06,125:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:18:06,125:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:19:28,733:CONFIG:junipervm3:calling RPC: get-config
+2016-09-14 14:19:28,734:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:19:28,902:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:19:29,018:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:19:29,134:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:19:29,252:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:19:29,369:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:19:29,537:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:19:29,653:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:19:29,769:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:19:29,886:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:19:29,887:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:20:12,233:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:20:12,234:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:20:13,316:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:20:13,433:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:20:13,549:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:20:13,668:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:20:13,785:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:20:13,903:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:20:14,020:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:20:14,187:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:20:14,254:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:20:14,255:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:22:25,678:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:22:25,680:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:22:26,666:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:22:26,783:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:22:26,848:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:22:26,967:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:22:27,084:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:22:27,202:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:22:27,368:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:22:27,485:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:22:27,602:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:22:27,603:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:23:18,894:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:23:18,895:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:19,876:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:19,994:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:20,110:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:20,229:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:20,345:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:20,463:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:20,629:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:20,746:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:20,863:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:23:20,864:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:23:57,104:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:23:57,105:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:58,034:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:58,151:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:58,266:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:58,385:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:58,502:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:58,620:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:58,736:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:58,853:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:23:58,970:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:23:58,971:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:24:27,160:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:24:27,161:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:24:28,195:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:24:28,312:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:24:28,377:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:24:28,546:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:24:28,612:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:24:28,780:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:24:28,897:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:24:29,013:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:24:29,130:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:24:29,131:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:25:01,065:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:25:01,066:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:25:01,999:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:25:02,115:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:25:02,231:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:25:02,350:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:25:02,467:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:25:02,635:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:25:02,751:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:25:02,867:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:25:02,984:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:25:02,985:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:27:21,433:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:27:21,434:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:22,418:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:22,535:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:22,651:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:22,770:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:22,887:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:23,005:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:23,121:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:23,237:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:23,355:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:27:23,355:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:27:47,520:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:27:47,521:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:48,450:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:48,567:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:48,682:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:48,801:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:48,918:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:49,036:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:49,202:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:49,318:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:27:49,436:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:27:49,437:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:28:19,408:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:28:19,409:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:28:20,542:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:28:20,659:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:28:20,774:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:28:20,893:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:28:21,010:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:28:21,128:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:28:21,244:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:28:21,360:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:28:21,478:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:28:21,479:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:29:01,603:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:29:01,604:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:29:02,487:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:29:02,554:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:29:02,669:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:29:02,789:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:29:02,906:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:29:03,024:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:29:03,190:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:29:03,307:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:29:03,425:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:29:03,425:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:30:56,742:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:30:56,743:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:30:57,160:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:30:57,161:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:31:17,422:CONFIG:junipervm3:calling RPC: get-interface-information
+2016-09-14 14:31:17,423:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:31:17,790:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:31:17,791:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:34:12,175:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:34:12,176:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:34:12,343:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:34:12,343:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:35:57,497:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:35:57,498:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:35:57,664:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:35:57,665:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:37:16,588:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:37:16,589:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:37:16,756:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:37:16,756:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:40:36,060:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:40:36,061:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:40:36,278:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:40:36,279:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:42:01,559:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:42:01,560:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:42:01,777:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:42:01,777:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:42:34,908:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:42:34,909:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:42:35,126:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:42:35,126:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:43:36,104:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:43:36,105:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:43:36,272:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:43:36,273:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:44:29,568:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:44:29,569:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:44:29,736:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:44:29,736:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:57:36,083:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:57:36,084:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:57:36,250:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:57:36,251:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:58:56,066:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:58:56,067:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:58:56,284:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:58:56,284:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 14:59:40,689:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 14:59:40,690:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 14:59:40,907:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 14:59:40,908:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 15:00:23,554:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 15:00:23,555:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 15:00:23,722:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 15:00:23,723:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 15:02:53,399:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 15:02:53,400:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 15:02:53,566:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 15:02:53,567:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 15:03:29,252:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 15:03:29,254:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 15:03:29,470:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 15:03:29,471:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 15:04:21,567:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 15:04:21,568:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 15:04:21,785:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 15:04:21,785:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 15:16:28,858:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 15:16:28,859:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 15:16:29,026:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 15:16:29,026:ncclient.operations.rpc:Requesting 'CloseSession'
+2016-09-14 15:17:54,269:CONFIG:junipervm3:calling RPC: get-route-information
+2016-09-14 15:17:54,270:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2016-09-14 15:17:54,488:CONFIG:junipervm3:rpc reponse recvd
+2016-09-14 15:17:54,489:ncclient.operations.rpc:Requesting 'CloseSession'

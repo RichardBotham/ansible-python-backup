@@ -1,0 +1,93 @@
+
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:		Ansible 2.1.1.0 on 2016-10-05
+  Config built using template:  a_and_b_nexus_pxag_dcag_vars
+  Config Build date:            2016-10-05-16-58-45
+  Config location:              /home/rbotham/playbooks/playbookdb/tasks                                                                                                                                                                              
+  Config Author:                Rich Botham
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+!'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''!
+!B Side general section NEXUS PXAG
+
+vlan 165
+ name  cmexg.glink.b-to-BBJR
+!
+vlan 164
+ name  cmexg.glink.b-to-DCAG
+!
+interface Ethernet1/48
+ switchport trunk allowed vlan add 165
+!
+interface Ethernet1/4
+ switchport trunk allowed vlan add 164
+!
+interface loopback164
+  vrf member cmexg.glink.b
+  ip address 10.255.64.6/32
+!
+interface Vlan165
+  vrf member cmexg.glink.b
+  ip address 10.255.64.5/31
+  ip pim sparse mode
+  no shutdown
+!
+interface Vlan164
+  vrf member cmexg.glink.b
+  ip address 10.254.64.8/31
+  ip pim sparse mode
+  no shutdown
+!
+vrf context cmexg.glink.b
+ip pim rp-address 66.54.251.236 group-list 224.0.27.0/24
+ip pim rp-address 66.54.251.236 group-list 224.0.32.0/24
+ip pim rp-address 66.54.251.236 group-list 224.0.34.0/24
+ip pim rp-address 66.54.251.236 group-list 233.72.75.64/26
+ip pim rp-address 66.54.251.236 group-list 233.119.160.64/26
+ip pim rp-address 66.54.251.236 group-list 233.158.8.128/25
+!
+router bgp 65422
+  vrf cmexg.glink.b
+    router-id 10.255.64.6
+    address-family ipv4 unicast
+      network 10.255.64.6/32
+    neighbor 10.255.64.4 remote-as 6394
+	neighbor 10.255.64.4 route-map rm-bb-in in
+	neighbor 10.255.64.4 route-map rm-bb-out in
+      description idcfraeq2bbjr02
+      timers 5 15
+      address-family ipv4 unicast
+        send-community
+    neighbor 10.254.64.9 remote-as 65423
+      description idcfraeq2dcag04
+      timers 5 15
+      address-family ipv4 unicast
+        send-community
+!
+route-map rm-bb-in permit 5
+	description "Match B Side Multicast Source Addresses"
+	match community bgpcomm:mcast:A
+route-map rm-bb-in permit 10
+	description "Match B Side Unicast Source Addresses"
+	match community bgpcomm:unicast
+route-map rm-bb-in permit 15
+	description "Match B Exchange Tagged Addresses"
+	match community bgpcomm:ownertype:exchange
+route-map rm-bb-in permit 20
+	description "Match B Exchange VRF Tagged Addresses"
+	match community bgpcomm:vrfid:cmexg.glink.a
+!
+route-map rm-bb-out permit 5
+	description "Match Customer Tagged Routes"
+	match community bgpcomm:ownertype:client
+!
+ip community-list expanded bgpcomm:match_all permit *:*
+ip community-list standard bgpcomm:mcast:A permit 1:1001
+ip community-list standard bgpcomm:mcast:B permit 1:2001
+ip community-list standard bgpcomm:unicast permit 2:3001
+ip community-list standard bgpcomm:ownertype:exchange permit 5:1
+ip community-list standard bgpcomm:ownertype:client permit 5:2

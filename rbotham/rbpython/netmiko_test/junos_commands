@@ -1,0 +1,5 @@
+show configuration | display set | no-more
+show route | no-more
+show route protocol bgp | no-more
+show arp | no-more
+show interface terse | no-more

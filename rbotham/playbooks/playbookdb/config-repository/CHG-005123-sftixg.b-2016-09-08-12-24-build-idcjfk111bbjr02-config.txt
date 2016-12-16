@@ -1,0 +1,34 @@
+  
+  
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by: 				Ansible 1.9.4 on 2016-09-08																
+  Config built using template: 	JFK_build_ebgp_config-json_v3.j2                                                                                            
+  Config Build date:			2016-09-08-12-25-24 
+  Config location: 				/home/rbotham/playbooks/playbookdb/tasks	 																							 
+  Config Author: 				Rich Botham                                                                                                     
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+!!!!!!!!!!!!!!
+idcjfk111bbjr01
+!!!!!!!!!!!!!!
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side interface section
+set interfaces ae1 unit 1051 description "{vrf: sftixg.b TRANSIT TO IDCJFK111PXAG01}"
+set interfaces ae1 unit 1051 vlan-id 1051
+set interfaces ae1 unit 1051 family inet address 10.254.51.1/31
+
+set routing-instances sftixg.b interface ae1.1051
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side ebgp section
+set routing-instances sftixg.b protocols bgp group sftixg.b.ebgp type external
+set routing-instances sftixg.b protocols bgp group sftixg.b.ebgp neighbor 10.254.51.0 description "IDCJFK111PXAG01"
+set routing-instances sftixg.b protocols bgp group sftixg.b.ebgp neighbor 10.254.51.0 peer-as 20424
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#multicast section
+
+set routing-instances sftixg.b protocols pim interface ae1.1051 mode sparse-dense 

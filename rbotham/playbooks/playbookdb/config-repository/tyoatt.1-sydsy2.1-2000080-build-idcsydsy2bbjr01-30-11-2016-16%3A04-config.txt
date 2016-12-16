@@ -1,0 +1,39 @@
+  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Config built by:              Ansible 2.1.1.0 on 2016-11-30
+Config built using template:  ingress/egress_mpls_lsp_template.j2
+Config Build date:            2016-11-30-16-04-42
+Config location:              /home/rbotham/playbooks/playbookdb/tasks                                                                                                                                                                              
+Config Author:                Rich Botham
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+#''''''''''''''''''''''''''''''''''''''''
+# Start Config for IDCSYDSY2BBJR01
+
+set interfaces ge-1/0/8 unit 602 description "VC-2000080-IDCTYOATTBBJR01-IDCSYDSY2BBJR01"
+set interfaces ge-1/0/8 unit 602 encapsulation vlan-ccc
+set interfaces ge-1/0/8 unit 602 vlan-id 602
+set interfaces ge-1/0/8 unit 602 family ccc policer input in-policer
+set interfaces ge-1/0/8 unit 602 family ccc policer output out-policer
+
+set protocols l2circuit neighbor 198.18.32.46 interface ge-1/0/8.602 psn-tunnel-endpoint 198.19.254.64
+set protocols l2circuit neighbor 198.18.32.46 interface ge-1/0/8.602 virtual-circuit-id 2000080
+set protocols l2circuit neighbor 198.18.32.46 interface ge-1/0/8.602 mtu 9198
+set protocols l2circuit neighbor 198.18.32.46 interface ge-1/0/8.602 description "VC-2000080-IDCTYOATTBBJR01-IDCSYDSY2BBJR01"
+
+
+set protocol mpls label-switched-path sydsy2.1-tyoatt.1 to 198.19.254.64
+set protocol mpls label-switched-path sydsy2.1-tyoatt.1 hop-limit 2
+set protocol mpls label-switched-path sydsy2.1-tyoatt.1 no-cspf
+set protocol mpls label-switched-path sydsy2.1-tyoatt.1 description "RSVP to PE-IDCTYOATTBBJR01"
+set protocol mpls label-switched-path sydsy2.1-tyoatt.1 primary sydsy2-tyoty2-tyoty2-tyoatt
+
+set protocol mpls path sydsy2-tyoty2-tyoty2-tyoatt 198.18.33.44 strict
+set protocol mpls path sydsy2-tyoty2-tyoty2-tyoatt 198.18.33.43 strict
+set protocol mpls path sydsy2-tyoty2-tyoty2-tyoatt 198.18.33.60 strict
+set protocol mpls path sydsy2-tyoty2-tyoty2-tyoatt 198.18.33.60 strict
+set protocol mpls path sydsy2-tyoty2-tyoty2-tyoatt 198.18.33.80 strict
+
+# End Config for IDCSYDSY2BBJR01
+#''''''''''''''''''''''''''''''''''''''''

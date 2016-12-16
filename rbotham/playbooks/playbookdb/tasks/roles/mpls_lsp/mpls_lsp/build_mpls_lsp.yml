@@ -1,0 +1,18 @@
+---
+- name: Build site configuration
+  strategy: debug
+  hosts: mpls_lsp_vars_v3
+  connection: local
+  gather_facts: true
+  vars:
+
+#  pre_tasks:
+#    - name: Remove Old Configuration files....
+#
+#      file: path=config-repository/ state=absent
+#
+#    - name: Create config-repository directory...
+#      file: path=config-repository/ state=directory
+
+- include : tasks/mpls_lsp_role.yml
+

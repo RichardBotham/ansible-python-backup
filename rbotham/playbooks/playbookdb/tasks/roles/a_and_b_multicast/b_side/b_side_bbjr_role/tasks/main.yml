@@ -1,0 +1,4 @@
+---
+- name: "Building BBJR Router B Side configuration..."
+  template: src=/home/rbotham/playbooks/playbookdb/tasks/roles/a_and_b_multicast/b_side/b_side_bbjr_role/templates/tyo_b_side_bbjr_template.j2  dest=/home/rbotham/playbooks/playbookdb/config-repository/{{change_number}}-{{inventory_hostname}}-{{b_exchange_vrf}}-{{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.second}}-build-config.txt
+

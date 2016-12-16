@@ -1,0 +1,5 @@
+!
+set interfaces [u'backbone']
+set interface description "backbone router"
+set interface ip address 10.1.1.192
+

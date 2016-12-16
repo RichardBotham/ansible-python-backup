@@ -1,0 +1,138 @@
+  config built by:              Ansible 2.1.1.0 on 2016-09-30
+  Config built using template:  a-side-7150-arista-template-v1.yml
+  Config Build date:            2016-09-30-16-26-21
+  Config location:              /home/rbotham/playbooks/playbookdb/tasks                                                                                                                                                                              
+  Config Author:                Rich Botham
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+!!!!!!!!!!!!!!
+idcfraeq2pxag04
+!!!!!!!!!!!!!!
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#general section
+
+set routing-instances eurexxg.b instance-type virtual-router
+set routing-instances eurexxg.b routing-options router-id 10.255.66.4
+set routing-instances eurexxg.b routing-options autonomous-system 20424
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#interface section
+#A Side
+set interfaces lo0 unit 5 description "Global OSPF Loopback"
+set interfaces lo0 unit 5 family inet address 198.18.217.4/32 preferred
+
+set interfaces ae1 unit 1066 description "{vrf: eurexxg.b TRANSIT TO IDCFRAEQ2BBJR02}"
+set interfaces ae1 unit 1066 vlan-id 1066
+set interfaces ae1 unit 1066 family inet address 10.242.66.8
+
+set interfaces ae5 unit 1065 description "{vrf: eurexxg.b TRANSIT TO IDCFRAEQ2PXAG03}"
+set interfaces ae5 unit 1065 vlan-id 1066
+set interfaces ae5 unit 1065 family inet address 10.242.65.5
+
+set interfaces ae0 unit 1066 description "{vrf: eurexxg.b TRANSIT TO IDCFRAEQ2DCAG04}"
+set interfaces ae0 unit 1066 vlan-id 1066
+set interfaces ae0 unit 1066 family inet address 10.242.66.2
+
+set interfaces ae2 unit 1066 description "{vrf: eurexxg.b TRANSIT TO IDCFRAEQ2DCAG04}"
+set interfaces ae2 unit 1066 vlan-id 1066
+set interfaces ae2 unit 1066 family inet address 10.242.66.4
+
+set interfaces ae3 unit 1066 description "{vrf: eurexxg.b TRANSIT TO IDCFRAEQ2NATD01}"
+set interfaces ae3 unit 1066 vlan-id 1066
+set interfaces ae3 unit 1066 family inet address 10.242.66.1
+
+
+set routing-instances eurexxg.b interface ae0.1066
+set routing-instances eurexxg.b interface ae1.1066
+set routing-instances eurexxg.b interface ae2.1066
+set routing-instances eurexxg.b interface ae5.1066
+set routing-instances eurexxg.b interface lo0.1066
+set routing-instances eurexxg.b interface ae3.1066
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+
+#A Side ospf section
+
+set protocols ospf area 0.0.0.0 interface lo0.0
+set protocols ospf area 0.0.0.0 interface ae0.5 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ae0.5 metric 65535
+set protocols ospf area 0.0.0.0 interface ae0.5 hello-interval 1
+set protocols ospf area 0.0.0.0 interface ae0.5 dead-interval 4
+set protocols ospf area 0.0.0.0 interface ae0.5 bfd-liveness-detection minimum-receive-interval 300
+set protocols ospf area 0.0.0.0 interface ae0.5 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface ae0.5 bfd-liveness-detection transmit-interval minimum-interval 300
+
+set protocols ospf area 0.0.0.0 interface ae1.5 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ae1.5 metric 65535
+set protocols ospf area 0.0.0.0 interface ae1.5 hello-interval 1
+set protocols ospf area 0.0.0.0 interface ae1.5 dead-interval 4
+set protocols ospf area 0.0.0.0 interface ae1.5 bfd-liveness-detection minimum-receive-interval 300
+set protocols ospf area 0.0.0.0 interface ae1.5 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface ae1.5 bfd-liveness-detection transmit-interval minimum-interval 300
+
+set protocols ospf area 0.0.0.0 interface ae2.5 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ae2.5 metric 65535
+set protocols ospf area 0.0.0.0 interface ae2.5 hello-interval 1
+set protocols ospf area 0.0.0.0 interface ae2.5 dead-interval 4
+set protocols ospf area 0.0.0.0 interface ae2.5 bfd-liveness-detection minimum-receive-interval 300
+set protocols ospf area 0.0.0.0 interface ae2.5 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface ae2.5 bfd-liveness-detection transmit-interval minimum-interval 300
+
+set protocols ospf area 0.0.0.0 interface ae5.5 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ae5.5 metric 1
+set protocols ospf area 0.0.0.0 interface ae5.5 hello-interval 65535
+set protocols ospf area 0.0.0.0 interface ae5.5 dead-interval 4
+set protocols ospf area 0.0.0.0 interface ae5.5 bfd-liveness-detection minimum-receive-interval 300
+set protocols ospf area 0.0.0.0 interface ae5.5 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface ae5.5 bfd-liveness-detection transmit-interval minimum-interval 300
+
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side ebgp section
+
+set routing-instances eurexxg.b protocols bgp path-selection always-compare-med
+set routing-instances eurexxg.b protocols bgp hold-time 20
+set routing-instances eurexxg.b protocols bgp advertise-inactive
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp type external
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp export ps_to_idcfraeq2bbjr01_export
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp import ps_from_idcfraeq2bbjr01_import
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp neighbor 10.242.66.9 description IDCFRAEQ2BBJR02
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp neighbor 10.242.66.9 peer-as 10101
+
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp neighbor 10.242.65.4 description IDCFRAEQ2PXAG03
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp neighbor 10.242.65.4 export ps_to_idcfraeq2pxag03_export
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp neighbor 10.242.66.5 description IDCFRAEQ2DCAG03
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp neighbor 10.242.66.5 export ps_to_idcfraeq2dcag03_export
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp neighbor 10.242.66.3 description IDCFRAEQ2DCAG04
+set routing-instances eurexxg.b protocols bgp group eurexxg.b.ebgp neighbor 10.242.66.3 export ps_to_idcfraeq2cag04_export
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#multicast section
+
+set routing-instances eurexxg.b protocols pim interface ae3.1066 mode sparse
+set routing-instances eurexxg.b protocols pim interface ae0.1066 mode sparse
+set routing-instances eurexxg.b protocols pim interface ae2.1066 mode sparse
+set routing-instances eurexxg.b protocols pim interface lo0.1066 mode sparse
+set routing-instances eurexxg.b protocols pim interface ae1.1066 mode sparse
+
+
+#*** RP 1 ***#
+
+
+#*** RP 2 ***#
+
+
+#*** RP 3 ***#
+
+
+#*** RP 4 ***#
+
+
+set policy-options community bgpcomm:vrfid:eurexxg.b members 3:1066
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#

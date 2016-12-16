@@ -1,0 +1,52 @@
+# MPLS LSP VARS
+
+template_version: ingress/egress_mpls_lsp_template.j2
+change_number: CHG-342812
+
+ingress_mpls_endpoint_hostname: IDCORDEQ4BBJR01
+egress_mpls_endpoint_hostname: IDCLONIX1BBJR02
+
+ingress_mpls_lsp_name: ordeq4.1-lonix1.1-1
+egress_mpls_lsp_name: lonix1.1-1-ordeq4.1
+
+ingress_mpls_vlan_ccc_interface: xe-3/0/2
+egress_mpls_vlan_ccc_interface: xe-0/0/3
+
+ingress_mpls_psn_endpoint: 198.19.255.254
+egress_mpls_psn_endpoint: 198.19.255.225
+
+ingress_mpls_lsp_l2cct_neighbor: 198.18.0.41
+egress_mpls_lsp_l2cct_neighbor: 198.18.16.43
+
+
+ingress_mpls_endpoint: 198.19.255.254
+egress_mpls_endpoint: 198.19.255.225
+
+mpls_vc_id: 1000290
+mpls_vlan_id: 841
+mpls_lsp_vlan_ccc_desc: NOMON ORDEQ4 - LONIX1 MONITORING EPL
+mpls_lsp_policer_name: limit-10m
+
+mpls_hop_limit: 6
+
+
+ingress_mpls_lsp_next_hops:
+ - 198.18.1.127
+ - 198.18.17.95
+ - 198.18.17.25
+ - 198.18.17.20
+ - 198.18.17.76
+egress_mpls_lsp_next_hops:
+ - 198.18.17.77
+ - 198.18.17.21
+ - 198.18.17.24
+ - 198.18.17.94
+ - 198.18.17.126
+
+datacentres:
+ - nyc
+ - fra2
+ - par2
+ - frh2
+ - ix12
+

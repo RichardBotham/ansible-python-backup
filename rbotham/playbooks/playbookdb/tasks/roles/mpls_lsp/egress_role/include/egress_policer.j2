@@ -1,0 +1,21 @@
+
+
+{% if egress_policer_limit_type == "m" and egress_policer_int_type == "1g" %}
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} if-exceeding bandwidth-limit {{egress_policer_limit}}{{egress_policer_limit_type}}
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} if-exceeding burst-size-limit 62500
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} then discard
+{% elif egress_policer_limit_type == "m" and egress_policer_int_type == "10g"%}
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} if-exceeding bandwidth-limit {{egress_policer_limit}}{{egress_policer_limit_type}}
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} if-exceeding burst-size-limit 625000
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} then discard
+{% elif egress_policer_limit_type == "g" and egress_policer_int_type == "1g"%}
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} if-exceeding bandwidth-limit {{egress_policer_limit}}{{egress_policer_limit_type}}
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} if-exceeding burst-size-limit 62500
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} then discard
+{% elif egress_policer_limit_type == "g" and egress_policer_int_type == "10g"%}
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} if-exceeding bandwidth-limit {{egress_policer_limit}}{{egress_policer_limit_type}}
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} if-exceeding burst-size-limit 625000
+set firewall policer lsp-policer-{{egress_policer_limit}}{{egress_policer_limit_type}} then discard
+{% endif %}
+
+

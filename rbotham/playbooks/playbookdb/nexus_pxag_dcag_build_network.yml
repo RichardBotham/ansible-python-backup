@@ -1,0 +1,15 @@
+---
+- name: Build NEXUS based PCAG and DCAG vrf extensions..
+  hosts: nexus_dcag_pxag_vars
+  connection: local
+  vars:
+
+#  pre_tasks:
+#    - name: Remove Old Configuration files....
+#
+#      file: path=config-repository/ state=absent
+#
+#    - name: Create config-repository directory...
+#      file: path=config-repository/ state=directory
+      
+- include : tasks/nexus_dcag_pxag_vars.yml

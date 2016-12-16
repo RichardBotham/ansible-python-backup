@@ -1,0 +1,136 @@
+  
+  
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:				Ansible 1.9.4 on 2016-09-08
+  Config built using template:  JFK_build_ebgp_config-json_v3.j2
+  Config Build date:            2016-09-08-12-25-24
+  Config location:              /home/rbotham/playbooks/playbookdb/tasks                                                                                                                                                                              
+  Config Author:                Rich Botham
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+!!!!!!!!!!!!!!
+idcjfk111pxag01
+!!!!!!!!!!!!!!
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#general section
+
+set routing-instances sftixg.a instance-type virtual-router
+set routing-instances sftixg.a routing-options router-id 10.255.50.2
+set routing-instances sftixg.a routing-options autonomous-system 20424
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#interface section
+#A Side
+set interfaces lo0 unit 1050 description "{vrf: sftixg.a}"
+set interfaces lo0 unit 1050 family inet address 10.255.50.2/32 preferred
+
+set interfaces ae1 unit 1050 description "{vrf: sftixg.a TRANSIT TO IDCJFK111BBJR01}"
+set interfaces ae1 unit 1050 vlan-id 1050
+set interfaces ae1 unit 1050 family inet address 10.254.50.0/31
+
+set interfaces ae5 unit 1050 description "{vrf: sftixg.a TRANSIT TO IDCJFK111PXAG02}"
+set interfaces ae5 unit 1050 vlan-id 1050
+set interfaces ae5 unit 1050 family inet address 10.254.50.7/31
+
+set interfaces ae0 unit 1050 description "{vrf: sftixg.a TRANSIT TO IDCJFK111DCAG01}"
+set interfaces ae0 unit 1050 vlan-id 1050
+set interfaces ae0 unit 1050 family inet address 10.254.50.3/31
+
+set interfaces ae2 unit 1050 description "{vrf: sftixg.a TRANSIT TO IDCJFK111DCAG02}"
+set interfaces ae2 unit 1050 vlan-id 1050
+set interfaces ae2 unit 1050 family inet address 10.254.50.5/31
+
+
+set routing-instances sftixg.a interface ae0.1050
+set routing-instances sftixg.a interface ae1.1050
+set routing-instances sftixg.a interface ae2.1050
+set routing-instances sftixg.a interface ae5.1050
+set routing-instances sftixg.a interface lo0.1050
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+
+#A Side ospf section
+
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface lo0.1050
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae0.1050 interface-type p2p
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae0.1050 metric 1
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae0.1050 hello-interval 1
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae0.1050 dead-interval 4
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae0.1050 bfd-liveness-detection minimum-receive-interval 300
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae0.1050 bfd-liveness-detection multiplier 3
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae0.1050 bfd-liveness-detection transmit-interval minimum-interval 300
+
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae5.1050 interface-type p2p
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae5.1050 metric 1
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae5.1050 hello-interval 1
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae5.1050 dead-interval 4
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae5.1050 bfd-liveness-detection minimum-receive-interval 300
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae5.1050 bfd-liveness-detection multiplier 3
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae5.1050 bfd-liveness-detection transmit-interval minimum-interval 300
+
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae2.1050 interface-type p2p
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae2.1050 metric 1
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae2.1050 hello-interval 1
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae2.1050 dead-interval 4
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae2.1050 bfd-liveness-detection minimum-receive-interval 300
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae2.1050 bfd-liveness-detection multiplier 3
+set routing instances sftixg.a protocols ospf area 0.0.0.0 interface ae2.1050 bfd-liveness-detection transmit-interval minimum-interval 300
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side ebgp section
+
+set routing-instances sftixg.a protocols bgp path-selection always-compare-med
+set routing-instances sftixg.a protocols bgp hold-time 20
+set routing-instances sftixg.a protocols bgp advertise-inactive
+set routing-instances sftixg.a protocols bgp group sftixg.a.ebgp type external
+set routing-instances sftixg.a protocols bgp group sftixg.a.ebgp export ps_to_idcjfk111bbjr01_export
+set routing-instances sftixg.a protocols bgp group sftixg.a.ebgp import ps_from_idcjfk111bbjr01_import
+set routing-instances sftixg.a protocols bgp group sftixg.a.ebgp neighbor 10.254.50.1 description IDCJFK111BBJR01
+set routing-instances sftixg.a protocols bgp group sftixg.a.ebgp neighbor 10.254.50.1 peer-as 6394
+
+
+#A Side ibgp section
+
+set routing-instances sftixg.a protocols bgp group sftixg.a.ibgp type internal
+set routing-instances sftixg.a protocols bgp group sftixg.a.ibgp local-address 10.255.50.2
+set routing-instances sftixg.a protocols bgp group sftixg.a.ibgp cluster 10.255.50.2
+set routing-instances sftixg.a protocols bgp group sftixg.a.ibgp neighbor 10.255.51.3 description IDCJFK111PXAG02
+set routing-instances sftixg.a protocols bgp group sftixg.a.ibgp neighbor 10.255.51.3 export ps_to_idcjfk111pxag02_export
+set routing-instances sftixg.a protocols bgp group sftixg.a.ibgp neighbor 10.255.51.5 description IDCJFK111DCAG02
+set routing-instances sftixg.a protocols bgp group sftixg.a.ibgp neighbor 10.255.51.5 export ps_to_idcjfk111dcag02_export
+set routing-instances sftixg.a protocols bgp group sftixg.a.ibgp neighbor 10.255.50.4 description IDCJFK111DCAG01
+set routing-instances sftixg.a protocols bgp group sftixg.a.ibgp neighbor 10.255.50.4 export ps_to_idcjfk111dcag01_export
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#multicast section
+
+set routing-instances sftixg.a protocols pim interface ae0.1050 mode sparse-dense
+set routing-instances sftixg.a protocols pim interface ae2.1050 mode sparse-dense
+set routing-instances sftixg.a protocols pim interface lo0.1050 mode sparse-dense
+set routing-instances sftixg.a protocols pim interface ae1.1050 mode sparse-dense
+
+set routing-instances sftixg.a protocols pim rp auto-rp discovery
+set routing-instances sftixg.a protocols pim dense-groups 224.0.1.40/32
+
+#*** RP 1 ***#
+
+
+#*** RP 2 ***#
+
+
+#*** RP 3 ***#
+
+
+#*** RP 4 ***#
+
+
+set policy-options community bgpcomm:vrfid:sftixg.a members 3:1050
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+ 

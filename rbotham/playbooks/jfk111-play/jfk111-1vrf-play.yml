@@ -1,0 +1,10 @@
+---
+ - name: testing configs
+   hosts: 127.0.0.1
+   connection: local
+
+   vars_files: 
+     - roles/1-vrf/vars/JFK_1vrf-build_ebgp_vars.yml
+
+   roles:
+     - 1-vrf

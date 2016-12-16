@@ -1,0 +1,36 @@
+
+
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:              Ansible {{ansible_version.full}} on {{ansible_date_time.date}}
+  Config built using template:  {{template_version}}
+  Config Build date:            {{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.minute}}-{{ansible_date_time.second}}
+  Config location:              {{playbook_dir}}
+  Config Author:                Rich Botham
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+#''''''''''''''''''''''''''''''''''''''''
+# Start Config for {{egress_mpls_endpoint_hostname}}
+
+set interfaces {{ingress_mpls_vlan_ccc_interface}} unit {{mpls_vlan_id}} description "{{mpls_lsp_vlan_ccc_desc}}"
+set interfaces {{ingress_mpls_vlan_ccc_interface}} unit {{mpls_vlan_id}} encapsulation vlan-ccc
+set interfaces {{ingress_mpls_vlan_ccc_interface}} unit {{mpls_vlan_id}} vlan-id {{mpls_vlan_id}}
+set interfaces {{ingress_mpls_vlan_ccc_interface}} unit {{mpls_vlan_id}} family ccc policer input {{mpls_lsp_policer_name}}
+
+set protocols l2circuit neighbor {{ingress_mpls_lsp_l2cct_neighbor}} interface {{egress_mpls_vlan_ccc_interface}} psn-tunnel-endpoint {{ingress_mpls_psn_endpoint}}
+set protocols l2circuit neighbor {{ingress_mpls_lsp_l2cct_neighbor}} interface {{egress_mpls_vlan_ccc_interface}} virtual-circuit-id {{mpls_vc_id}}
+set protocols l2circuit neighbor {{ingress_mpls_lsp_l2cct_neighbor}} interface {{egress_mpls_vlan_ccc_interface}} mtu 9198
+set protocols l2circuit neighbor {{ingress_mpls_lsp_l2cct_neighbor}} interface {{egress_mpls_vlan_ccc_interface}} description "{{mpls_lsp_vlan_ccc_desc}}"
+
+set protocol mpls label-switched-path {{ingress_mpls_lsp_name}} to {{ingress_mpls_endpoint}}
+set protocol mpls label-switched-path {{ingress_mpls_lsp_name}} hop-limit {{mpls_hop_limit}}
+set protocol mpls label-switched-path {{ingress_mpls_lsp_name}} no-cspf
+set protocol mpls label-switched-path {{ingress_mpls_lsp_name}} description "RSVP to PE-{{ingress_mpls_endpoint_hostname}}"
+set protocol mpls label-switched-path {{ingress_mpls_lsp_name}} primary {{ datacentres | reverse | join ("-") }}
+
+{% for egress_mpls_hops in egress_mpls_lsp_next_hops %}
+set protocol mpls path {{egress_mpls_lsp_name}} {{egress_mpls_hops}} strict
+{% endfor %}
+
+# End Config for {{egress_mpls_endpoint_hostname}}
+

@@ -1,0 +1,70 @@
+configdate: "{{lookup('pipe', 'date +%y-%m-%d')}}"
+template_version: "JFK_build_ebgp_config-json_v3.j2"
+# Common Stuff - dont alter
+
+transit_mask: /31
+loopback_mask: /32
+local_bgp_asn: 20424
+remote_bgp_asn: 6394
+pim_mode: sparse-dense
+
+pxag_pim_interface:
+  - ae0
+  - ae1
+
+dcag_pim_interface:
+  - ae0
+
+
+# Exchange Specific Stuff - do alter
+a_exchange_loop_subnet: 10.255.50
+a_exchange_loop_4th_oct: 2
+a_exchange_transit_subnet: 10.254.50
+a_exchange_transit_4th_oct: 0
+a_exchange_vrf: sftixg.a
+a_exchange_vrf_rt: 1050
+
+b_exchange_loop_subnet: 10.255.51
+b_exchange_loop_4th_oct: 3
+b_exchange_transit_subnet: 10.254.51
+b_exchange_transit_4th_oct: 0
+b_exchange_vrf: sftixg.b
+b_exchange_vrf_rt: 1051
+
+
+#----------------------------------------------------------------------------------#
+
+#a side mcast groups and rp's
+a_exchg_rp_addr1: 
+a_exchange_group_mask1:
+   -
+       
+a_exchg_rp_addr2: 
+a_exchange_group_mask2:
+   -
+
+a_exchg_rp_addr3: 
+a_exchange_group_mask3:
+   -
+
+a_exchg_rp_addr4: 
+a_exchange_group_mask4:
+   -
+
+
+
+#----------------------------------------------------------------------------------#
+#b side mcast groups and rp's
+b_exchg_rp_addr1: 
+b_exchange_group_mask1: 
+   -
+
+b_exchg_rp_addr2:
+b_exchange_group_mask2: 
+   -
+b_exchg_rp_addr3:
+b_exchange_group_mask3: 
+   -
+b_exchg_rp_addr4:
+b_exchange_group_mask4: 
+   -

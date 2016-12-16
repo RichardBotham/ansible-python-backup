@@ -1,0 +1,58 @@
+# MPLS LSP VARS
+
+template_version: ingress/egress_mpls_lsp_template.j2
+change_number: "{{ingress_mpls_lsp_name}}-{{mpls_vc_id}}"
+
+#----------------------------------------------------------#
+ingress_mpls_endpoint_hostname: IDCTYOTY2BBJR01
+ingress_mpls_lsp_name: tyoty2.1-tyoatt.1
+ingress_mpls_vlan_ccc_interface: xe-0/0/10
+ingress_mpls_psn_endpoint: 198.19.254.24
+ingress_mpls_lsp_l2cct_ip: 198.18.32.44
+ingress_mpls_lsp_next_hops:
+ - 198.18.33.84
+
+
+#----------------------------------------------------------#
+# In mbps i.e. 1 Gig = 1, 10 Gig = 10
+
+ingress_policer_limit: 1.5
+ingress_policer_int_type: 10g
+ingress_policer_limit_type: g
+
+egress_policer_limit: 1.5
+egress_policer_int_type: 10g
+egress_policer_limit_type: g
+
+
+#----------------------------------------------------------#
+egress_mpls_endpoint_hostname: IDCTYOATTBBJR01
+egress_mpls_lsp_name: tyoatt.1-tyoty2.1
+egress_mpls_vlan_ccc_interface: xe-0/0/10
+egress_mpls_psn_endpoint: 198.19.254.64
+egress_mpls_lsp_l2cct_ip: 198.18.32.46
+egress_mpls_lsp_next_hops:
+ - 198.18.33.85
+#----------------------------------------------------------#
+#Common Vars
+
+mpls_vc_id: 2000082
+mpls_vlan_id: 601
+ingress_mpls_lsp_vlan_ccc_desc: "VC-{{mpls_vc_id}}-{{ingress_mpls_endpoint_hostname}}-{{egress_mpls_endpoint_hostname}}"
+egress_mpls_lsp_vlan_ccc_desc: "VC-{{mpls_vc_id}}-{{egress_mpls_endpoint_hostname}}-{{ingress_mpls_endpoint_hostname}}"
+in_mpls_lsp_policer_name: in-policer
+out_mpls_lsp_policer_name: out-policer
+mpls_hop_limit: 2
+datacentres:
+ - tyoty2
+ - tyoatt
+
+egress_dcag_name: IDCTYOATTDCAG03
+egress_dcag_int_desc: "To-{{egress_dcag_name}}"
+egress_dcag_vlan_desc: "VC-{{mpls_vc_id}}-Extention"
+
+ingress_dcag_name: IDCTYOTY2DCAG01
+ingress_dcag_int_desc: "To-{{ingress_dcag_name}}"
+ingress_dcag_vlan_desc: "VC-{{mpls_vc_id}}-Extention"
+
+

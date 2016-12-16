@@ -1,0 +1,40 @@
+
+
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:              Ansible 1.9.4 on 2016-09-08
+  Config built using template:  ingress/egress_mpls_lsp_template.j2
+  Config Build date:            2016-09-08-17-10-31
+  Config location:              /home/rbotham/playbooks/playbookdb/tasks
+  Config Author:                Rich Botham
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+#''''''''''''''''''''''''''''''''''''''''
+# Start Config for IDCORDEQ4BBJR01
+
+set interfaces xe-3/0/2 unit 841 description "NOMON ORDEQ4 - LONIX1 MONITORING EPL"
+set interfaces xe-3/0/2 unit 841 encapsulation vlan-ccc
+set interfaces xe-3/0/2 unit 841 vlan-id 841
+set interfaces xe-3/0/2 unit 841 family ccc policer input limit-10m
+
+set protocols l2circuit neighbor 198.18.16.43 interface xe-3/0/2 psn-tunnel-endpoint 198.19.255.225
+set protocols l2circuit neighbor 198.18.16.43 interface xe-3/0/2 virtual-circuit-id 1000290
+set protocols l2circuit neighbor 198.18.16.43 interface xe-3/0/2 mtu 9198
+set protocols l2circuit neighbor 198.18.16.43 interface xe-3/0/2 description "NOMON ORDEQ4 - LONIX1 MONITORING EPL"
+
+
+set protocol mpls label-switched-path ordeq4.1-lonix1.1-1 to 198.19.255.225
+set protocol mpls label-switched-path ordeq4.1-lonix1.1-1 hop-limit 6
+set protocol mpls label-switched-path ordeq4.1-lonix1.1-1 no-cspf
+set protocol mpls label-switched-path ordeq4.1-lonix1.1-1 description "RSVP to PE-"IDCORDEQ4BBJR01""
+set protocol mpls label-switched-path ordeq4.1-lonix1.1-1 primary nyc-fra2-par2-frh2-ix12
+
+set protocol mpls path ordeq4.1-lonix1.1-1 198.18.1.127 strict
+set protocol mpls path ordeq4.1-lonix1.1-1 198.18.17.95 strict
+set protocol mpls path ordeq4.1-lonix1.1-1 198.18.17.25 strict
+set protocol mpls path ordeq4.1-lonix1.1-1 198.18.17.20 strict
+set protocol mpls path ordeq4.1-lonix1.1-1 198.18.17.76 strict
+
+# End Config for IDCORDEQ4BBJR01
+#''''''''''''''''''''''''''''''''''''''''
+

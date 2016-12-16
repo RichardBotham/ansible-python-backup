@@ -1,0 +1,31 @@
+---
+  - name: "==> Configure BBJR A side ..."
+    hosts: idctyoattbbjr01
+    gather_facts: no
+    connection: local
+  
+    roles:
+    - a_and_b_multicast/a_side/a_side_bbjr_role
+
+  - name: "==> Configure BBJR B side ..."
+    hosts: idctyoattbbjr02
+    gather_facts: no
+    connection: local
+    roles:
+    - a_and_b_multicast/b_side/b_side_bbjr_role
+
+  - name: "==> Configure DCAG A Side ..."
+    hosts: idctyoattdcag03
+    gather_facts: no
+    connection: local
+
+    roles:
+    - a_and_b_multicast/a_side/a_side_dcag_role
+
+  - name: "==> Configure DCAG B Side ..."
+    hosts: idctyoattdcag04
+    gather_facts: no
+    connection: local
+
+    roles:
+    - a_and_b_multicast/b_side/b_side_dcag_role

@@ -1,0 +1,18 @@
+configdate: "{{lookup('pipe', 'date +%y-%m-%d')}}"
+
+# Common Stuff - dont alter
+
+transit_mask: /31
+loopback_mask: /32
+local_bgp_asn: 20424
+remote_bgp_asn: 6394
+
+# Exchange Specific Stuff - do alter
+s_exchange_loop_subnet: 10.71.67
+s_exchange_loop_4th_oct: 7
+s_exchange_transit_subnet: 10.71.66
+s_exchange_transit_4th_oct: 96
+s_exchange_vrf: plusfeed.select
+s_exchange_vrf_rt: 1071
+
+#----------------------------------------------------------------------------------#

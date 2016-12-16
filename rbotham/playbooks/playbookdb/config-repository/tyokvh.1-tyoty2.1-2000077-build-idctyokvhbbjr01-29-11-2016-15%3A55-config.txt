@@ -1,0 +1,37 @@
+  
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Config built by:              Ansible 2.1.1.0 on 2016-11-29
+Config built using template:  ingress/egress_mpls_lsp_template.j2
+Config Build date:            2016-11-29-15-55-00
+Config location:              /home/rbotham/playbooks/playbookdb/tasks                                                                                                                                                                              
+Config Author:                Rich Botham
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+#''''''''''''''''''''''''''''''''''''''''
+# Start Config for IDCTYOKVHBBJR01
+
+set interfaces ge-1/1/8 unit 606 description "VC-2000077-IDCTYOKVHBBJR01-IDCTYOTY2BBJR01"
+set interfaces ge-1/1/8 unit 606 encapsulation vlan-ccc
+set interfaces ge-1/1/8 unit 606 vlan-id 606
+set interfaces ge-1/1/8 unit 606 family ccc policer input in-policer
+set interfaces ge-1/1/8 unit 606 family ccc policer output out-policer
+
+set protocols l2circuit neighbor 198.18.32.44 interface ge-1/1/8.606 psn-tunnel-endpoint 198.19.254.24
+set protocols l2circuit neighbor 198.18.32.44 interface ge-1/1/8.606 virtual-circuit-id 2000077
+set protocols l2circuit neighbor 198.18.32.44 interface ge-1/1/8.606 mtu 9198
+set protocols l2circuit neighbor 198.18.32.44 interface ge-1/1/8.606 description "VC-2000077-IDCTYOKVHBBJR01-IDCTYOTY2BBJR01"
+
+
+set protocol mpls label-switched-path tyokvh.1-tyoty2.1 to 198.19.254.24
+set protocol mpls label-switched-path tyokvh.1-tyoty2.1 hop-limit 2
+set protocol mpls label-switched-path tyokvh.1-tyoty2.1 no-cspf
+set protocol mpls label-switched-path tyokvh.1-tyoty2.1 description "RSVP to PE-IDCTYOTY2BBJR01"
+set protocol mpls label-switched-path tyokvh.1-tyoty2.1 primary tyokvh-tyoty2
+
+set protocol mpls path tyokvh-tyoty2 198.18.33.161 strict
+
+# End Config for IDCTYOKVHBBJR01
+#''''''''''''''''''''''''''''''''''''''''

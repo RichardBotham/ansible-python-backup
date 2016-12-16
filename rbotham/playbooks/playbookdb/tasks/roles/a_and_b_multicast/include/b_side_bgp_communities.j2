@@ -1,0 +1,6 @@
+ip community-list expanded bgpcomm:match_all permit *:*
+ip community-list standard bgpcomm:mcast:A permit 1:1001
+ip community-list standard bgpcomm:mcast:B permit 1:2001
+ip community-list standard bgpcomm:unicast permit 2:3001
+ip community-list standard bgpcomm:ownertype:exchange permit 5:1
+ip community-list standard bgpcomm:ownertype:client permit 5:2

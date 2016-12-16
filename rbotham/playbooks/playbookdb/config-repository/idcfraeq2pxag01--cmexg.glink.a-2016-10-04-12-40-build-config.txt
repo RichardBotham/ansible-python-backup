@@ -1,0 +1,80 @@
+
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:		Ansible 2.1.1.0 on 2016-10-04
+  Config built using template:  a_and_b_nexus_pxag_dcag_vars
+  Config Build date:            2016-10-04-12-56-40
+  Config location:              /home/rbotham/playbooks/playbookdb/tasks                                                                                                                                                                              
+  Config Author:                Rich Botham
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+!'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''!
+!A Side general section NEXUS PXAG
+
+vlan 3565
+ name  cmexg.glink.a-to-BBJR
+
+vlan 3566
+ name  cmexg.glink.a-to-DCAG
+
+interface Ethernet1/48
+ switchport trunk allowed vlan add 3565
+
+
+interface Ethernet1/4
+ switchport trunk allowed vlan add 3566
+
+
+interface loopback1063
+  vrf member cmexg.glink.a
+  ip address 10.255.63.1/32
+
+interface Vlan3565
+  vrf member cmexg.glink.a
+  ip address 10.254.63.0/31
+  ip pim sparse mode
+  no shutdown
+
+interface Vlan3566
+  vrf member cmexg.glink.a
+  ip address 10.254.63.2/31
+  ip pim sparse mode
+  no shutdown
+
+vrf context cmexg.glink.a
+!*** RP 1 ***!
+ip pim rp-address 205.209.215.254 group-list 233.158.8.0/25
+ip pim rp-address 205.209.215.254 group-list 233.72.75.0/26
+ip pim rp-address 205.209.215.254 group-list 224.0.26.0/24
+ip pim rp-address 205.209.215.254 group-list 224.0.31.0/24
+ip pim rp-address 205.209.215.254 group-list 224.0.33.0/24
+ip pim rp-address 205.209.215.254 group-list 233.119.160.0/26
+
+!*** RP 2 ***!
+
+
+!*** RP 3 ***!
+
+
+!*** RP 4 ***!
+
+
+
+router bgp 65422
+  vrf cmexg.glink.a
+    router-id 10.255.63.1
+    address-family ipv4 unicast
+      network 10.255.63.1/32
+    neighbor 10.254.63.0 remote-as 6394
+      description idcfraeq2bbjr01
+      timers 5 15
+      address-family ipv4 unicast
+        send-community
+    neighbor 10.254.63.2 remote-as 65423
+      description idcfraeq2dcag03
+      timers 5 15
+      address-family ipv4 unicast
+        send-community

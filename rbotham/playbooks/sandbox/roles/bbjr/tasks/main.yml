@@ -1,0 +1,4 @@
+---
+- name: Generate backbone configuration 
+  template: src=roles/bbjr/templates/bbjr.j2 dest=roles/output/backbonertr.txt
+

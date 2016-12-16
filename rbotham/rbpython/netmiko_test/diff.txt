@@ -1,0 +1,132 @@
+Command being run = show configuration | display set | no-mor	Command being run = show configuration | display set | no-mor
+
+set version 12.1X44.3						set version 12.1X44.3
+set groups group1 interfaces ge-0/0/1 unit 0			set groups group1 interfaces ge-0/0/1 unit 0
+set system root-authentication encrypted-password "$1$yWLOOVd	set system root-authentication encrypted-password "$1$yWLOOVd
+set system login user rich uid 2000				set system login user rich uid 2000
+set system login user rich class super-user			set system login user rich class super-user
+set system login user rich authentication encrypted-password 	set system login user rich authentication encrypted-password 
+set system services ssh protocol-version v2			set system services ssh protocol-version v2
+set system services telnet					set system services telnet
+set system services netconf ssh					set system services netconf ssh
+set system services web-management http interface ge-0/0/0.0	set system services web-management http interface ge-0/0/0.0
+set system syslog user * any emergency				set system syslog user * any emergency
+set system syslog file messages any any				set system syslog file messages any any
+set system syslog file messages authorization info		set system syslog file messages authorization info
+set system syslog file interactive-commands authorization inf	set system syslog file interactive-commands authorization inf
+set system syslog file interactive-commands interactive-comma	set system syslog file interactive-commands interactive-comma
+set system license autoupdate url https://ae1.juniper.net/jun	set system license autoupdate url https://ae1.juniper.net/jun
+set interfaces ge-0/0/0 unit 0 family inet address 120.120.10	set interfaces ge-0/0/0 unit 0 family inet address 120.120.10
+set interfaces lo0 unit 101 family inet address 13.13.13.13/3	set interfaces lo0 unit 101 family inet address 13.13.13.13/3
+set class-of-service schedulers best-effort apply-groups grou	set class-of-service schedulers best-effort apply-groups grou
+set class-of-service schedulers best-effort transmit-rate per	set class-of-service schedulers best-effort transmit-rate per
+set security forwarding-options family inet6 mode packet-base	set security forwarding-options family inet6 mode packet-base
+set security forwarding-options family mpls mode packet-based	set security forwarding-options family mpls mode packet-based
+set security forwarding-options family iso mode packet-based	set security forwarding-options family iso mode packet-based
+Command being run = show route | no-more 			Command being run = show route | no-more 
+
+inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid	inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid
++ = Active Route, - = Last Active, * = Both			+ = Active Route, - = Last Active, * = Both
+
+13.13.13.13/32     *[Direct/0] 1w2d 22:28:50			13.13.13.13/32     *[Direct/0] 1w2d 22:28:50
+                    > via lo0.101				                    > via lo0.101
+120.120.100.0/24   *[Direct/0] 2w4d 01:58:25		      <
+                    > via ge-0/0/0.0			      <
+120.120.100.2/32   *[Local/0] 2w4d 01:58:27			120.120.100.2/32   *[Local/0] 2w4d 01:58:27
+                      Local via ge-0/0/0.0			                      Local via ge-0/0/0.0
+Command being run = show route protocol bgp | no-more		Command being run = show route protocol bgp | no-more
+
+
+inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid	inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid
+Command being run = show arp | no-more				Command being run = show arp | no-more
+
+MAC Address       Address         Name                      I	MAC Address       Address         Name                      I
+00:0c:29:80:f0:2d 120.120.100.1   120.120.100.1             g	00:0c:29:80:f0:2d 120.120.100.1   120.120.100.1             g
+Command being run = show configuration | display set | no-mor	Command being run = show configuration | display set | no-mor
+
+set version 12.1X44.3						set version 12.1X44.3
+set groups group1 interfaces ge-0/0/1 unit 0			set groups group1 interfaces ge-0/0/1 unit 0
+set system root-authentication encrypted-password "$1$yWLOOVd	set system root-authentication encrypted-password "$1$yWLOOVd
+set system login user rich uid 2000				set system login user rich uid 2000
+set system login user rich class super-user			set system login user rich class super-user
+set system login user rich authentication encrypted-password 	set system login user rich authentication encrypted-password 
+set system services ssh protocol-version v2			set system services ssh protocol-version v2
+set system services telnet					set system services telnet
+set system services netconf ssh					set system services netconf ssh
+set system services web-management http interface ge-0/0/0.0	set system services web-management http interface ge-0/0/0.0
+set system syslog user * any emergency				set system syslog user * any emergency
+set system syslog file messages any any				set system syslog file messages any any
+set system syslog file messages authorization info		set system syslog file messages authorization info
+set system syslog file interactive-commands authorization inf	set system syslog file interactive-commands authorization inf
+set system syslog file interactive-commands interactive-comma	set system syslog file interactive-commands interactive-comma
+set system license autoupdate url https://ae1.juniper.net/jun	set system license autoupdate url https://ae1.juniper.net/jun
+set interfaces ge-0/0/0 unit 0 family inet address 120.120.10	set interfaces ge-0/0/0 unit 0 family inet address 120.120.10
+set interfaces lo0 unit 101 family inet address 13.13.13.13/3	set interfaces lo0 unit 101 family inet address 13.13.13.13/3
+set class-of-service schedulers best-effort apply-groups grou	set class-of-service schedulers best-effort apply-groups grou
+set class-of-service schedulers best-effort transmit-rate per	set class-of-service schedulers best-effort transmit-rate per
+set security forwarding-options family inet6 mode packet-base	set security forwarding-options family inet6 mode packet-base
+set security forwarding-options family mpls mode packet-based	set security forwarding-options family mpls mode packet-based
+set security forwarding-options family iso mode packet-based	set security forwarding-options family iso mode packet-based
+Command being run = show route | no-more 			Command being run = show route | no-more 
+
+inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid	inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid
++ = Active Route, - = Last Active, * = Both			+ = Active Route, - = Last Active, * = Both
+
+13.13.13.13/32     *[Direct/0] 1w2d 22:28:50			13.13.13.13/32     *[Direct/0] 1w2d 22:28:50
+                    > via lo0.101				                    > via lo0.101
+120.120.100.0/24   *[Direct/0] 2w4d 01:58:25			120.120.100.0/24   *[Direct/0] 2w4d 01:58:25
+                    > via ge-0/0/0.0			      |	                    > via ge-0/0/2.0
+120.120.100.2/32   *[Local/0] 2w4d 01:58:27			120.120.100.2/32   *[Local/0] 2w4d 01:58:27
+                      Local via ge-0/0/0.0			                      Local via ge-0/0/0.0
+Command being run = show route protocol bgp | no-more		Command being run = show route protocol bgp | no-more
+
+
+inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid	inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid
+Command being run = show arp | no-more				Command being run = show arp | no-more
+
+MAC Address       Address         Name                      I	MAC Address       Address         Name                      I
+00:0c:29:80:f0:2d 120.120.100.1   120.120.100.1             g	00:0c:29:80:f0:2d 120.120.100.1   120.120.100.1             g
+Command being run = show configuration | display set | no-mor	Command being run = show configuration | display set | no-mor
+
+set version 12.1X44.3						set version 12.1X44.3
+set groups group1 interfaces ge-0/0/1 unit 0			set groups group1 interfaces ge-0/0/1 unit 0
+set system root-authentication encrypted-password "$1$yWLOOVd	set system root-authentication encrypted-password "$1$yWLOOVd
+set system login user rich uid 2000				set system login user rich uid 2000
+set system login user rich class super-user			set system login user rich class super-user
+set system login user rich authentication encrypted-password 	set system login user rich authentication encrypted-password 
+set system services ssh protocol-version v2			set system services ssh protocol-version v2
+set system services telnet					set system services telnet
+set system services netconf ssh					set system services netconf ssh
+set system services web-management http interface ge-0/0/0.0	set system services web-management http interface ge-0/0/0.0
+set system syslog user * any emergency				set system syslog user * any emergency
+set system syslog file messages any any				set system syslog file messages any any
+set system syslog file messages authorization info		set system syslog file messages authorization info
+set system syslog file interactive-commands authorization inf	set system syslog file interactive-commands authorization inf
+set system syslog file interactive-commands interactive-comma	set system syslog file interactive-commands interactive-comma
+set system license autoupdate url https://ae1.juniper.net/jun	set system license autoupdate url https://ae1.juniper.net/jun
+set interfaces ge-0/0/0 unit 0 family inet address 120.120.10	set interfaces ge-0/0/0 unit 0 family inet address 120.120.10
+set interfaces lo0 unit 101 family inet address 13.13.13.13/3	set interfaces lo0 unit 101 family inet address 13.13.13.13/3
+set class-of-service schedulers best-effort apply-groups grou	set class-of-service schedulers best-effort apply-groups grou
+set class-of-service schedulers best-effort transmit-rate per	set class-of-service schedulers best-effort transmit-rate per
+set security forwarding-options family inet6 mode packet-base	set security forwarding-options family inet6 mode packet-base
+set security forwarding-options family mpls mode packet-based	set security forwarding-options family mpls mode packet-based
+set security forwarding-options family iso mode packet-based	set security forwarding-options family iso mode packet-based
+Command being run = show route | no-more 			Command being run = show route | no-more 
+
+inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid	inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid
++ = Active Route, - = Last Active, * = Both			+ = Active Route, - = Last Active, * = Both
+
+13.13.13.13/32     *[Direct/0] 1w2d 22:28:50			13.13.13.13/32     *[Direct/0] 1w2d 22:28:50
+                    > via lo0.101				                    > via lo0.101
+120.120.100.0/24   *[Direct/0] 2w4d 01:58:25			120.120.100.0/24   *[Direct/0] 2w4d 01:58:25
+                    > via ge-0/0/0.0			      |	                    > via ge-0/0/2.0
+120.120.100.2/32   *[Local/0] 2w4d 01:58:27			120.120.100.2/32   *[Local/0] 2w4d 01:58:27
+                      Local via ge-0/0/0.0			                      Local via ge-0/0/0.0
+Command being run = show route protocol bgp | no-more		Command being run = show route protocol bgp | no-more
+
+
+inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid	inet.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hid
+Command being run = show arp | no-more				Command being run = show arp | no-more
+
+MAC Address       Address         Name                      I	MAC Address       Address         Name                      I
+00:0c:29:80:f0:2d 120.120.100.1   120.120.100.1             g	00:0c:29:80:f0:2d 120.120.100.1   120.120.100.1             g

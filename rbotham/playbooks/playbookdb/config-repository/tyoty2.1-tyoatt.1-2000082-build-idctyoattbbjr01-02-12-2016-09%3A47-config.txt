@@ -1,0 +1,45 @@
+  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Config built by:              Ansible 2.1.1.0 on 2016-12-02
+Config built using template:  ingress/egress_mpls_lsp_template.j2
+Config Build date:            2016-12-02-09-47-02
+Config location:              /home/rbotham/playbooks/playbookdb/tasks                                                                                                                                                                              
+Config Author:                Rich Botham
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+#''''''''''''''''''''''''''''''''''''''''
+# Start Config for IDCTYOATTBBJR01
+
+set interfaces xe-0/0/10 unit 601 description "VC-2000082-IDCTYOATTBBJR01-IDCTYOTY2BBJR01"
+set interfaces xe-0/0/10 unit 601 encapsulation vlan-ccc
+set interfaces xe-0/0/10 unit 601 vlan-id 601
+set interfaces xe-0/0/10 unit 601 family ccc policer input lsp-policer-1.5g
+
+set protocols l2circuit neighbor 198.18.32.44 interface xe-0/0/10.601 psn-tunnel-endpoint 198.19.254.24
+set protocols l2circuit neighbor 198.18.32.44 interface xe-0/0/10.601 virtual-circuit-id 2000082
+set protocols l2circuit neighbor 198.18.32.44 interface xe-0/0/10.601 mtu 9198
+set protocols l2circuit neighbor 198.18.32.44 interface xe-0/0/10.601 description "VC-2000082-IDCTYOATTBBJR01-IDCTYOTY2BBJR01"
+
+
+set protocol mpls label-switched-path tyoatt.1-tyoty2.1 to 198.19.254.24
+set protocol mpls label-switched-path tyoatt.1-tyoty2.1 hop-limit 2
+set protocol mpls label-switched-path tyoatt.1-tyoty2.1 no-cspf
+set protocol mpls label-switched-path tyoatt.1-tyoty2.1 description "RSVP to PE-IDCTYOTY2BBJR01"
+set protocol mpls label-switched-path tyoatt.1-tyoty2.1 primary tyoatt-tyoty2
+
+set protocol mpls path tyoatt-tyoty2 198.18.33.85 strict
+
+set interfaces xe-0/0/10 description To-IDCTYOATTDCAG03 
+set interfaces xe-0/0/10 flexible-vlan-tagging
+set interfaces xe-0/0/10 mtu 9000
+set interfaces xe-0/0/10 encapsulation flexible-ethernet-services
+
+
+set firewall policer lsp-policer-1.5g if-exceeding bandwidth-limit 1.5g
+set firewall policer lsp-policer-1.5g if-exceeding burst-size-limit 625000
+set firewall policer lsp-policer-1.5g then discard
+
+
+# End Config for IDCTYOATTBBJR01
+#''''''''''''''''''''''''''''''''''''''''

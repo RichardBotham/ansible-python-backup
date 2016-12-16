@@ -1,0 +1,171 @@
+  
+  
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:				Ansible {{ansible_version.full}} on {{ansible_date_time.date}}
+  Config built using template:  {{template_version}}
+  Config Build date:            {{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.minute}}-{{ansible_date_time.second}}
+  Config location:              {{playbook_dir}}                                                                                                                                                                              
+  Config Author:                Rich Botham
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+!!!!!!!!!!!!!!
+idcjfk111pxag01
+!!!!!!!!!!!!!!
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#general section
+
+set routing-instances {{a_exchange_vrf}} instance-type virtual-router
+set routing-instances {{a_exchange_vrf}} routing-options router-id {{a_exchange_loop_subnet}}.{{a_exchange_loop_4th_oct}}
+set routing-instances {{a_exchange_vrf}} routing-options autonomous-system {{local_bgp_asn}}
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#interface section
+#A Side
+set interfaces lo0 unit {{a_exchange_vrf_rt}} description "{vrf: {{a_exchange_vrf}}}"
+set interfaces lo0 unit {{a_exchange_vrf_rt}} family inet address {{a_exchange_loop_subnet}}.{{a_exchange_loop_4th_oct}}{{loopback_mask}} preferred
+
+set interfaces ae1 unit {{a_exchange_vrf_rt}} description "{vrf: {{a_exchange_vrf}} TRANSIT TO IDCJFK111BBJR01}"
+set interfaces ae1 unit {{a_exchange_vrf_rt}} vlan-id {{a_exchange_vrf_rt}}
+set interfaces ae1 unit {{a_exchange_vrf_rt}} family inet address {{a_exchange_transit_subnet}}.{{a_exchange_transit_4th_oct}}{{transit_mask}}
+
+set interfaces ae5 unit {{a_exchange_vrf_rt}} description "{vrf: {{a_exchange_vrf}} TRANSIT TO IDCJFK111PXAG02}"
+set interfaces ae5 unit {{a_exchange_vrf_rt}} vlan-id {{a_exchange_vrf_rt}}
+set interfaces ae5 unit {{a_exchange_vrf_rt}} family inet address {{a_exchange_transit_subnet}}.{{a_exchange_transit_4th_oct+7}}{{transit_mask}}
+
+set interfaces ae0 unit {{a_exchange_vrf_rt}} description "{vrf: {{a_exchange_vrf}} TRANSIT TO IDCJFK111DCAG01}"
+set interfaces ae0 unit {{a_exchange_vrf_rt}} vlan-id {{a_exchange_vrf_rt}}
+set interfaces ae0 unit {{a_exchange_vrf_rt}} family inet address {{a_exchange_transit_subnet}}.{{a_exchange_transit_4th_oct+3}}{{transit_mask}}
+
+set interfaces ae2 unit {{a_exchange_vrf_rt}} description "{vrf: {{a_exchange_vrf}} TRANSIT TO IDCJFK111DCAG02}"
+set interfaces ae2 unit {{a_exchange_vrf_rt}} vlan-id {{a_exchange_vrf_rt}}
+set interfaces ae2 unit {{a_exchange_vrf_rt}} family inet address {{a_exchange_transit_subnet}}.{{a_exchange_transit_4th_oct+5}}{{transit_mask}}
+
+
+set routing-instances {{a_exchange_vrf}} interface ae0.{{a_exchange_vrf_rt}}
+set routing-instances {{a_exchange_vrf}} interface ae1.{{a_exchange_vrf_rt}}
+set routing-instances {{a_exchange_vrf}} interface ae2.{{a_exchange_vrf_rt}}
+set routing-instances {{a_exchange_vrf}} interface ae5.{{a_exchange_vrf_rt}}
+set routing-instances {{a_exchange_vrf}} interface lo0.{{a_exchange_vrf_rt}}
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+
+#A Side ospf section
+
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface lo0.{{a_exchange_vrf_rt}}
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae0.{{a_exchange_vrf_rt}} interface-type p2p
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae0.{{a_exchange_vrf_rt}} metric 1
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae0.{{a_exchange_vrf_rt}} hello-interval 1
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae0.{{a_exchange_vrf_rt}} dead-interval 4
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae0.{{a_exchange_vrf_rt}} bfd-liveness-detection minimum-receive-interval 300
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae0.{{a_exchange_vrf_rt}} bfd-liveness-detection multiplier 3
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae0.{{a_exchange_vrf_rt}} bfd-liveness-detection transmit-interval minimum-interval 300
+
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae5.{{a_exchange_vrf_rt}} interface-type p2p
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae5.{{a_exchange_vrf_rt}} metric 1
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae5.{{a_exchange_vrf_rt}} hello-interval 1
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae5.{{a_exchange_vrf_rt}} dead-interval 4
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae5.{{a_exchange_vrf_rt}} bfd-liveness-detection minimum-receive-interval 300
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae5.{{a_exchange_vrf_rt}} bfd-liveness-detection multiplier 3
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae5.{{a_exchange_vrf_rt}} bfd-liveness-detection transmit-interval minimum-interval 300
+
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae2.{{a_exchange_vrf_rt}} interface-type p2p
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae2.{{a_exchange_vrf_rt}} metric 1
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae2.{{a_exchange_vrf_rt}} hello-interval 1
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae2.{{a_exchange_vrf_rt}} dead-interval 4
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae2.{{a_exchange_vrf_rt}} bfd-liveness-detection minimum-receive-interval 300
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae2.{{a_exchange_vrf_rt}} bfd-liveness-detection multiplier 3
+set routing instances {{a_exchange_vrf}} protocols ospf area 0.0.0.0 interface ae2.{{a_exchange_vrf_rt}} bfd-liveness-detection transmit-interval minimum-interval 300
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side ebgp section
+
+set routing-instances {{a_exchange_vrf}} protocols bgp path-selection always-compare-med
+set routing-instances {{a_exchange_vrf}} protocols bgp hold-time 20
+set routing-instances {{a_exchange_vrf}} protocols bgp advertise-inactive
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ebgp type external
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ebgp export ps_to_idcjfk111bbjr01_export
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ebgp import ps_from_idcjfk111bbjr01_import
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ebgp neighbor {{a_exchange_transit_subnet}}.{{a_exchange_transit_4th_oct+1}} description IDCJFK111BBJR01
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ebgp neighbor {{a_exchange_transit_subnet}}.{{a_exchange_transit_4th_oct+1}} peer-as {{remote_bgp_asn}}
+
+
+#A Side ibgp section
+
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ibgp type internal
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ibgp local-address {{a_exchange_loop_subnet}}.{{a_exchange_loop_4th_oct}}
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ibgp cluster {{a_exchange_loop_subnet}}.{{a_exchange_loop_4th_oct}}
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ibgp neighbor {{b_exchange_loop_subnet}}.{{b_exchange_loop_4th_oct}} description IDCJFK111PXAG02
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ibgp neighbor {{b_exchange_loop_subnet}}.{{b_exchange_loop_4th_oct}} export ps_to_idcjfk111pxag02_export
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ibgp neighbor {{b_exchange_loop_subnet}}.{{b_exchange_loop_4th_oct+2}} description IDCJFK111DCAG02
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ibgp neighbor {{b_exchange_loop_subnet}}.{{b_exchange_loop_4th_oct+2}} export ps_to_idcjfk111dcag02_export
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ibgp neighbor {{a_exchange_loop_subnet}}.{{a_exchange_loop_4th_oct+2}} description IDCJFK111DCAG01
+set routing-instances {{a_exchange_vrf}} protocols bgp group {{a_exchange_vrf}}.ibgp neighbor {{a_exchange_loop_subnet}}.{{a_exchange_loop_4th_oct+2}} export ps_to_idcjfk111dcag01_export
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#multicast section
+
+set routing-instances {{a_exchange_vrf}} protocols pim interface ae0.{{a_exchange_vrf_rt}} mode {{pim_mode}}
+set routing-instances {{a_exchange_vrf}} protocols pim interface ae2.{{a_exchange_vrf_rt}} mode {{pim_mode}}
+set routing-instances {{a_exchange_vrf}} protocols pim interface lo0.{{a_exchange_vrf_rt}} mode {{pim_mode}}
+set routing-instances {{a_exchange_vrf}} protocols pim interface ae5.{{a_exchange_vrf_rt}} mode {{pim_mode}}
+set routing-instances {{a_exchange_vrf}} protocols pim interface ae1.{{a_exchange_vrf_rt}} mode {{pim_mode}}
+
+{% if pim_mode == "sparse-dense" %}
+set routing-instances {{a_exchange_vrf}} protocols pim rp auto-rp discovery
+set routing-instances {{a_exchange_vrf}} protocols pim dense-groups 224.0.1.40/32
+{% endif %}
+
+#*** RP 1 ***#
+{% if a_exchange_group_mask1 and a_exchg_rp_addr1 %}
+{% for exchg_grp in a_exchange_group_mask1 %}
+set routing-instances {{a_exchange_vrf}} protocols pim rp static address {{a_exchg_rp_addr1}} group-ranges {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+{% if a_exchange_group_mask1 and a_exchg_rp_addr1 %}
+set routing-instances {{a_exchange_vrf}} protocols pim rp static address {{a_exchg_rp_addr2}} override
+{% endif %}
+
+#*** RP 2 ***#
+{% if a_exchange_group_mask2 and a_exchg_rp_addr2 %}
+{% for exchg_grp in a_exchange_group_mask2 %}
+set routing-instances {{a_exchange_vrf}} protocols pim rp static address {{a_exchg_rp_addr2}} group-ranges {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+{% if a_exchange_group_mask2 and a_exchg_rp_addr2 %}
+set routing-instances {{a_exchange_vrf}} protocols pim rp static address {{a_exchg_rp_addr2}} override
+{% endif %}
+
+#*** RP 3 ***#
+{% if a_exchange_group_mask3 and a_exchg_rp_addr3 %}
+{% for exchg_grp in a_exchange_group_mask3 %}
+set routing-instances {{a_exchange_vrf}} protocols pim rp static address {{a_exchg_rp_addr3}} group-ranges {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+{% if a_exchange_group_mask3 and a_exchg_rp_addr3 %}
+set routing-instances {{a_exchange_vrf}} protocols pim rp static address {{a_exchg_rp_addr3}} override
+{% endif %}
+
+#*** RP 4 ***#
+{% if a_exchange_group_mask4 and a_exchg_rp_addr4 %}
+{% for exchg_grp in a_exchange_group_mask4 %}
+set routing-instances {{a_exchange_vrf}} protocols pim rp static address {{a_exchg_rp_addr4}} group-ranges {{exchg_grp}}
+{% endfor %}
+{% endif %}
+
+{% if a_exchange_group_mask4 and a_exchg_rp_addr4 %}
+set routing-instances {{a_exchange_vrf}} protocols pim rp static address {{a_exchg_rp_addr4}} override
+{% endif %}
+
+set policy-options community bgpcomm:vrfid:{{a_exchange_vrf}} members 3:{{a_exchange_vrf_rt}}
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+ 

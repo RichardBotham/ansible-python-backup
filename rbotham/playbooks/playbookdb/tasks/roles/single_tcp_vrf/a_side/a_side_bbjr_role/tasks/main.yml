@@ -1,0 +1,3 @@
+---
+- name: "Building BBJR Router A Side configuration..."
+  template: src=../templates/a_side_bbjr_template.j2 dest=/home/rbotham/playbooks/playbookdb/config-repository/{{change_number}}-{{b_exchange_vrf}}-{{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.second}}-build-{{inventory_hostname}}-config.txt

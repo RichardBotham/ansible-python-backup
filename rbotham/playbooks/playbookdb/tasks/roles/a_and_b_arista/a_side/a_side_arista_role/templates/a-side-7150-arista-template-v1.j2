@@ -1,0 +1,144 @@
+
+  
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:              Ansible {{ansible_version.full}} on {{ansible_date_time.date}}
+  Config built using template:  {{template_version}} 
+  Config Build date:            {{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.minute}}-{{ansible_date_time.second}}
+  Config location:              {{playbook_dir}}                                                                                                                                                                              
+  Config Author:                Rich Botham
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+!!!!!!!!!!!!!!
+idcfraeq2natd01
+!!!!!!!!!!!!!!
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+
+no ip igmp snooping
+ip routing
+!
+ip multicast-routing
+!
+transceiver qsfp default-mode 4x10G
+!
+logging host {{logging_server1}}
+logging host {{logging_server2}}
+logging host {{logging_server3}}
+logging source-interface Loopback0
+!
+hostname {{hostname}}
+!
+ntp server {{ntp_server1}}
+ntp server {{ntp_server2}} prefer
+!
+snmp-server chassis-id {{hostname}}
+snmp-server source-interface Loopback0
+snmp-server community {{snmp_ro_comm1}} ro
+snmp-server community {{snmp_ro_comm2}} ro
+snmp-server host {{snmp_server1}} version 2c {{snmp_ro_comm1}}
+snmp-server host {{snmp_server1}} version 2c {{snmp_ro_comm2}}
+snmp-server host {{snmp_server2}} version 2c {{snmp_ro_comm1}}
+snmp-server host {{snmp_server3}} version 2c {{snmp_ro_comm1}}
+snmp-server enable traps
+!
+spanning-tree mode rapid-pvst
+!
+tacacs-server key {{tacacs_server_key}}
+tacacs-server host {{tacacs_server1}} key {{tacacs_server_key}}
+tacacs-server host {{tacacs_server2}} key {{tacacs_server_key}}
+
+aaa group server tacacs+ TACACS
+   server {{tacacs_server1}}
+   server {{tacacs_server2}}
+!
+aaa authentication login default group TACACS local
+aaa authentication enable default group TACACS local
+aaa authorization exec default group TACACS local
+aaa authorization commands 0-1,15 default group TACACS local
+aaa accounting commands all default start-stop group TACACS
+!
+no aaa root
+!
+username admin role network-admin secret {{network_admin_pwd}}
+!
+clock timezone US/Central
+!
+ip tacacs source-interface Loopback0
+!
+management api http-commands
+   no shutdown
+!
+vlan 5
+  name "Backbone OSPF Vlan"
+!
+vlan {{a_exchange_vrf_rt}}  
+  name "vrf:{{a_exchange_vrf}}-feed to IDCFRAEQ2PXAG03"
+!
+bfd interval 300 min_rx 300 multiplier 3
+ip pim bfd
+!
+
+interface Loopback0
+ description lo0-{{hostname}}
+ ip address {{global_loop_subnet}}.{{global_loop_subnet_ip+id}}/32
+!
+interface port-channel5
+    switchport trunk allowed vlan add 5,{{a_exchange_vrf_rt}}
+    no shutdown
+!
+interface Ethernet1
+    description {{eth1_description}}
+    no switchport
+    channel-group 5 mode active 
+    no shutdown
+!
+interface Vlan5
+    ip address {{global_transit_subnet}}.{{global_transit_subnet_ip}}/31
+    ip ospf network point-to-point
+    ip ospf cost 65535
+    no shutdown
+!
+interface Vlan{{a_exchange_vrf_rt}}     
+    vrf forwarding {{a_exchange_vrf}}
+    ip address {{a_exchange_transit_subnet}}.{{a_exchange_transit_4th_oct}}/31
+    ip pim {{pim_mode}} mode
+    no shutdown
+!   
+router ospf 10
+  bfd all-interfaces
+  log-adjacency-changes
+  router id {{global_loop_subnet}}.{{global_loop_subnet_ip}}
+  network {{global_loop_subnet}}.{{global_loop_subnet_ip}}/32 area 0
+  network {{global_transit_subnet}}.{{global_transit_subnet_ip}}/31 area 0
+!  
+router bgp {{local_bgp_asn}}
+  bgp log-neighbor-changes
+  vrf {{a_exchange_vrf}}
+  neighbor {{a_exchange_transit_subnet}}.{{a_exchange_transit_4th_oct}} remote-as {{remote_bgp_asn}}
+  neighbor {{a_exchange_transit_subnet}}.{{a_exchange_transit_4th_oct}} fall-over bfd
+  neighbor {{a_exchange_transit_subnet}}.{{a_exchange_transit_4th_oct}} route-map rm-to-IDCFRAEQ2PXAG02
+!
+ 
+ip community-list expanded bgpcomm:match_permit *:*
+ip community-list standard bgpcomm:mcast:A permit 1:1001
+ip community-list standard bgpcomm:mcast:B permit 1:2001
+ip community-list standard bgpcomm:unicast permit 2:3001
+ip community-list standard bgpcomm:ownertype:exchange permit 5:1
+ip community-list standard bgpcomm:ownertype:client permit 5:2
+ip community-list standard bgpcomm:vrfid:{{a_exchange_vrf}} permit 3:{{a_exchange_vrf_rt}}
+!
+route-map rm-to-IDCFRAEQ2PXAG02 permit 5
+ description "Match A side Multicast routes"
+ match community bgpcomm:mcast:A
+route-map rm-to-IDCFRAEQ2PXAG02 permit 10
+ description "Match A side Unicast routes"
+ match community bgpcomm:unicast
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+---
+  - name: Generate single vrf JFK 111 Configs
+   
+    template: src=/home/idco.intdata.com/rbotham/playbooks/jfk111-play/roles/1-vrf/templates/JFK_1vrf_build_ebgp_config-json.j2 dest=/home/idco.intdata.com/rbotham/playbooks/jfk111-play/roles/1-vrf/output/{{s_exchange_vrf}}-{{s_exchange_vrf_rt}}-jfk-111-{{configdate}}-build.cfg

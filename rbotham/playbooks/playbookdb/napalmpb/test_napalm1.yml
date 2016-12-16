@@ -1,0 +1,62 @@
+---
+  - hosts: junos
+    gather_facts: no
+    connection: local
+
+    roles:
+      - Juniper.junos
+    
+    tasks:
+      - name: OBTAIN LOGIN CREDENTIALS
+        include_vars: secrets.yml
+
+      - name: DEFINE PROVIDER
+        set_fact:
+          provider:
+            host: "{{ inventory_hostname }}"
+            user: "{{ creds['username'] }}"
+            passwd: "{{ creds['password'] }}"
+            auth_pass: "{{ creds['auth_pass'] }}"
+
+      - name: Get Junos Facts 
+        junos_get_facts:
+          host: "{{ inventory_hostname }}"
+          user: "{{ creds['username'] }}"
+          passwd: "{{ creds['password'] }}"
+        register: junos_facts_results
+
+      - name: Print Facts
+        debug:
+          var: junos_facts_results
+
+
+      - name: Get Config
+        junos_rpc:
+          host={{ inventory_hostname }}
+          user={{ creds['username'] }}
+          passwd={{ creds['password'] }}
+          logfile=cli.log
+          
+          rpc=get-interface-information
+          format=text
+          dest=get-conf.cfg
+          
+          rpc=get-route-information
+          format=text
+          dest=get-route.txt
+        
+
+
+        register: junos
+        
+      - name: Print Config
+        debug: 
+          var: junos
+
+      - name: Apply Test Config
+        napalm_install_config:
+          host={{ inventory_hostname }}
+          user={{ creds['username'] }}
+          passwd={{ creds['password'] }}          
+          config_file=new_config.conf
+

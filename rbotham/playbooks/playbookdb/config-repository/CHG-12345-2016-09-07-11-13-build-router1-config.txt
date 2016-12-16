@@ -1,0 +1,62 @@
+
+
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:              Ansible 1.9.4 on 2016-09-07
+  Config built using template:  mpls_lsp_template.j2
+  Config Build date:            2016-09-07-11-02-13
+  Config location:              /home/rbotham/playbooks/playbookdb/tasks
+  Config Author:                Rich Botham
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+#''''''''''''''''''''''''''''''''''''''''
+# Start Config for IDCSYDALCBBJR01
+
+set interfaces ge-1/0/9 unit 501 description "NOMON SYSLAC - SYDSY2 MONITORING EPL"
+set interfaces ge-1/0/9 unit 501 encapsulation vlan-ccc
+set interfaces ge-1/0/9 unit 501 vlan-id 501
+set interfaces ge-1/0/9 unit 501 family ccc policer input limit-1000m
+
+set protocols l2circuit neighbor 198.18.32.74 interface ge-1/0/9 psn-tunnel-endpoint 198.19.253.7
+set protocols l2circuit neighbor 198.18.32.74 interface ge-1/0/9 virtual-circuit-id 1000287
+set protocols l2circuit neighbor 198.18.32.74 interface ge-1/0/9 mtu 9198
+set protocols l2circuit neighbor 198.18.32.74 interface ge-1/0/9 description "NOMON SYSLAC - SYDSY2 MONITORING EPL"
+
+
+set protocol mpls label-switched-path sydalc.1-sydsy2.1-1 to 198.19.253.7
+set protocol mpls label-switched-path sydalc.1-sydsy2.1-1 hop-limit 2
+set protocol mpls label-switched-path sydalc.1-sydsy2.1-1 no-cspf
+set protocol mpls label-switched-path sydalc.1-sydsy2.1-1 description "RSVP to PE-"IDCSYDALCBBJR01""
+set protocol mpls label-switched-path sydalc.1-sydsy2.1-1 primary sydalc.1-sydsy2.1-1
+
+set protocol mpls path sydalc.1-sydsy2.1-1 198.18.33.165 strict
+
+# End Config for IDCSYDALCBBJR01
+#''''''''''''''''''''''''''''''''''''''''
+
+
+
+
+#''''''''''''''''''''''''''''''''''''''''
+# Start Config for IDCSYDSY2BBJR01
+
+set interfaces ge-1/0/9 unit 501 description "NOMON SYSLAC - SYDSY2 MONITORING EPL"
+set interfaces ge-1/0/9 unit 501 encapsulation vlan-ccc
+set interfaces ge-1/0/9 unit 501 vlan-id 501
+set interfaces ge-1/0/9 unit 501 family ccc policer input limit-1000m
+
+set protocols l2circuit neighbor 198.18.32.70 interface ge-1/0/9 psn-tunnel-endpoint 198.19.255.87
+set protocols l2circuit neighbor 198.18.32.70 interface ge-1/0/9 virtual-circuit-id 1000287
+set protocols l2circuit neighbor 198.18.32.70 interface ge-1/0/9 mtu 9198
+set protocols l2circuit neighbor 198.18.32.70 interface ge-1/0/9 description "NOMON SYSLAC - SYDSY2 MONITORING EPL"
+
+set protocol mpls label-switched-path sydsy2.1-1-sydalc.1 to 198.19.255.87
+set protocol mpls label-switched-path sydsy2.1-1-sydalc.1 hop-limit 2
+set protocol mpls label-switched-path sydsy2.1-1-sydalc.1 no-cspf
+set protocol mpls label-switched-path sydsy2.1-1-sydalc.1 description "RSVP to PE-IDCSYDSY2BBJR01"
+set protocol mpls label-switched-path sydsy2.1-1-sydalc.1 primary sydsy2.1-1-sydalc.1
+
+set protocol mpls path sydsy2.1-1-sydalc.1 198.18.33.164 strict
+
+# End Config for IDCSYDSY2BBJR01
+

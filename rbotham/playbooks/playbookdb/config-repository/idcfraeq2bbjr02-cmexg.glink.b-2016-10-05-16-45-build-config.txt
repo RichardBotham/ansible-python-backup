@@ -1,0 +1,33 @@
+  
+  
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  Config built by:                Ansible 2.1.1.0 on 2016-10-05																
+  Config built using template:    a_and_b_nexus_pxag_dcag_vars                                                                                            
+  Config Build date:              2016-10-05-16-58-45 
+  Config location:                /home/rbotham/playbooks/playbookdb/tasks	 																							 
+  Config Author:                  Rich Botham                                                                                                     
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+!!!!!!!!!!!!!!
+idcfraeq2bbjr02
+!!!!!!!!!!!!!!
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side interface section
+set interfaces ae1 unit  description "{vrf: cmexg.glink.b TRANSIT TO idcfrae2qpxag02"
+set interfaces ae1 unit  vlan-id 1064
+set interfaces ae1 unit  family inet address 10.255.64.4/31
+
+set routing-instances cmexg.glink.b interface .165
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side ebgp section
+set routing-instances cmexg.glink.b protocols bgp group cmexg.glink.b.ebgp type external
+set routing-instances cmexg.glink.b protocols bgp group cmexg.glink.b.ebgp neighbor 10.255.64.5 description "idcfrae2qpxag02"
+set routing-instances cmexg.glink.b protocols bgp group cmexg.glink.b.ebgp neighbor 10.255.64.5 peer-as 65422
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#multicast section
+
+set routing-instances cmexg.glink.b protocols pim interface .165 mode sparse 

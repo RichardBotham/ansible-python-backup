@@ -1,0 +1,17 @@
+---
+  - name: "==> Configure MPLS LSP INGRESS..."
+    hosts: idctyoty2bbjr01
+    gather_facts: no
+    connection: local
+    roles:
+    - mpls_lsp/ingress_role
+
+
+  - name: "==> Configure MPLS LSP EGRESS ..."
+    hosts: idctyoattbbjr01
+    gather_facts: no
+    connection: local
+    roles:
+    - mpls_lsp/egress_role
+
+

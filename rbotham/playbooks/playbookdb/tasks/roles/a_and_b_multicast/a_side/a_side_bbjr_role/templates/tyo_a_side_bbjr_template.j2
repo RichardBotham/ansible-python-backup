@@ -1,0 +1,25 @@
+  
+
+  Config built by:                Ansible {{ansible_version.full}} on {{ansible_date_time.date}}																
+  Config built using template:    {{template_version}}                                                                                            
+  Config Build date:              {{ansible_date_time.date}}-{{ansible_date_time.hour}}-{{ansible_date_time.minute}}-{{ansible_date_time.second}} 
+  Config location:                {{playbook_dir}}	 																							 
+  Config Author:                  Rich Botham                                                                                                     
+  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+!!!!!!!!!!!!!!
+{{inventory_hostname}}
+!!!!!!!!!!!!!!
+
+#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''#
+#A side interface section
+set interfaces {{a_side_bbjr_int}} unit {{a_exchange_vrf_vlan_bbjr}} description "{vrf: {{a_exchange_vrf}} TRANSIT TO {{a_side_dcag_hostname}}"
+set interfaces {{a_side_bbjr_int}} unit {{a_exchange_vrf_vlan_bbjr}} vlan-id {{a_exchange_vrf_rt}}
+set interfaces {{a_side_bbjr_int}} unit {{a_exchange_vrf_vlan_bbjr}} family inet address {{a_exchange_dcag_bbjr_ipsub}}.{{a_exchange_dcag_bbjr_ip+0}}/31
+
+set interfaces lo0.{{a_exchange_vrf_rt}} family inet address {{a_exchange_loop_ipsub}}.{{a_exchange_loop_base+dev_id}}/32
+
+set routing-instances {{a_exchange_vrf}} interface {{a_side_bbjr_int}}.{{a_exchange_vrf_vlan_bbjr}}
+
+set routing-instances {{a_exchange_vrf}} protocols pim interface {{a_side_bbjr_int}}.{{a_exchange_vrf_vlan_bbjr}} mode {{pim_mode}} 
