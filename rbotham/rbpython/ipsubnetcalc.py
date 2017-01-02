@@ -23,6 +23,8 @@ class SubnetCalc(object):
 				bin_mask3 = bin(int(mask_octets[2])).split('0b')[1].zfill(8)
 				bin_mask4 = bin(int(mask_octets[3])).split('0b')[1].zfill(8)
 								
+				subnet_start = 0
+
 				hostbits = bin_mask1.count('0') + bin_mask2.count('0')+ bin_mask3.count('0')+ bin_mask4.count('0'); print "host bits are", hostbits
 			
 				mask_bits = (32 - hostbits);print "mask bits are", mask_bits,"\n"
@@ -33,14 +35,18 @@ class SubnetCalc(object):
 					max_hosts = (2 ** hostbits - 2)
 					print "The subnet mask is a \t\t\t", mask_bits
 					print "Maximum subnets are:\t\t\t", max_subnets
-					print "Maximum hosts per subnet are:\t", max_hosts 
+					print "Maximum hosts per subnet are:\t", max_hosts
+					while subnet_start < 256:
+						print "Subnet is:", subnet_start, "\thost", (subnet_start + 1), "\t\t\t to host", (subnet_start + hostbits)
+						subnet_start = (subnet_start + (2 ** hostbits))
 					
 				elif mask_bits >= 16 and mask_bits < 24:
 					max_subnets = (2 ** (mask_bits - 16))
 					max_hosts = (2 ** hostbits - 2)
 					print "The subnet mask is a \t\t\t", mask_bits
 					print "Maximum subnets are:\t\t\t", max_subnets
-					print "Maximum hosts per subnet are:\t", max_hosts 
+					print "Maximum hosts per subnet are:\t", max_hosts
+
 			
 
 				elif mask_bits >= 1 and mask_bits < 16:
@@ -51,6 +57,6 @@ class SubnetCalc(object):
 					print "Maximum hosts per subnet are:\t", max_hosts 
 
 #---------------------------------------------------#
-test_ip = SubnetCalc('120.100.45.6', '255.255.224.0')
+test_ip = SubnetCalc('120.100.45.6', '255.255.255.224')
 test_ip.convert_to_binary()
 
