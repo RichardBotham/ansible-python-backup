@@ -1,0 +1,81 @@
+g-research
+founded:	2001
+employees:	201 - 500
+
+
+Q1:
+Is the network managed in any form or wholly in house managed
+
+Q2:
+What type of network do you have?
+
+Q3:
+What is the size of the network?
+
+Q4:
+I heard that you are building out a new lab on another floor - can you tell me about that?
+
+Q5:
+What projects/initiatives do you have for the coming 18 months and what requirements are they based on?
+
+Q6:
+How do you handle changes and on call if no remote working is permitted?
+
+Q7:
+Is G-Research planning on opening any other locations?
+
+Q8:
+At G-Research what is the business split between low latency and non low latency requirements?
+Do you generally have more low latency requirements or less
+
+the traditional asset classes generally come out like this:
+cash (lowest risk)
+fixed-interest (bonds)
+property
+shares (highest risk)
+
+
+!---------------------------------------------!
+Interesting points.
+
+Defining new solutions in code to facilitate automated deployment and continuous enforcement of policy and design principals.
+
+Ansible/Python - how do GR do this presently?
+
+!---------------------------------------------!
+5YT - Q
+G Research is the type of environment where I can leverage my strengths and that provides me opporuntities.
+
+Firstly - my Goal is to build my career at G-Research and to have opportunities to get closer to the business and the departments as an engineer and hence provide real tangible value and returns to the business from a network services standpoint
+
+I would want this to naturally progess and provide value to the business on the next 5 years based on requirements and the roadmaps.
+
+During that 5 year time period i would be looking to keep the technology in concert with the business needs to provide the appropriate services and expansion to the business to grow and function correctly.
+
+Additionally automation and standardisation would also form a part of the work over that time period.
+
+I've invested the last 4 - 5 months of my personal time in Python and Ansible and have alreay provide real tangible benefits to the company - this has been hugely enjoyable and rewarding.
+
+I envisage that at the 5 year period that cycle would repeat to a larger degree in terms of technological advancements in general and commercial growth.
+
+From a personal standpoint I would be expecting to have some form of small team due to natural commercial growth. 
+
+!------------------------------------------!
+WWH
+
+As you say - "the position offers a fantastic opportunity to work for a vibrant, growing and ambitious company in our Network Engineering team."
+
+1 - To develop my skills, take on interesting projects, and work with people I can really learn from. 
+2 - To have the opportunity to provide automation and standardisation
+
+
+
+!------------------------------------------!
+!General Questions.
+Our investment strategies, software and IT Systems are used to:
+
+Evaluate, forecast and simulate investment ideas
+Test for and control risk in investment portfolios
+Maximise investment returns across a range of markets and products
+!
+Could you elaborate on this a little and has there ever been anything that really suprised by the reuslts of the testing
