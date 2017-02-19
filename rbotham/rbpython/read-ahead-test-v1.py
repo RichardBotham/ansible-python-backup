@@ -3,19 +3,26 @@ import re
 fopen = open("myiprouteout.txt", "r")
 routes = fopen.readlines()
 
-for route in routes:
+subnet_marker = []
+
+
+for subnet_index, route in enumerate(routes):
     if re.search(r".+subnetted.+", route):
-        amount_subnets = re.search(r"[0-9]+\ssubnets", route)
-        print route.strip(), "\t\t\t\t\t\t\t\tAmount of subnets are",amount_subnets.group()
+        amount_subnets = re.search(r"[0-9]+\s", route)
+        print route.strip(), "\n", "Subnet amount is --> ", amount_subnets.group()
+        print "subnet index is at line  -->", subnet_index, "\n"
+fopen.close()
+
+
 
 
 
 '''
+
+Notes
 route_string = "     198.18.40.0/32 subnetted, 6 subnets"
 
 if re.search(r".+subnetted.+", route_string):
     line = re.search(r".+subnetted.+", route_string)
     print "Match Found", line.group()
 '''
-
-fopen.close()

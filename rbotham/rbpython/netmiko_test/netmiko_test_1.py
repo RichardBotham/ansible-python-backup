@@ -11,17 +11,16 @@ import os
 
 fopen = open('pre_collection.txt', 'w+')
 
-
-
-juniper = {
+false_ = {
     'device_type': 'juniper',
-    'ip':   '120.120.100.2',
+    'ip': '120.120.100.2',
     'username': 'rich',
     'password': 'ccie10808',
-    'port' : 22,          	# optional, defaults to 22
-    'secret': '',     		# optional, defaults to ''
-    'verbose': False,       	# optional, defaults to False
+    'port': 22,  # optional, defaults to 22
+    'secret': '',  # optional, defaults to ''
+    'verbose': False,  # optional, defaults to False
 }
+juniper = false_
 
 net_connect = ConnectHandler(**juniper)
 
